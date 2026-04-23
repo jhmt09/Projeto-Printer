@@ -1,0 +1,12 @@
+Como trocar fotos do banner
+
+1. Acesse a hospedagem (cPanel ou FTP).
+2. Entre na pasta do site e abra: images/banner/
+3. Envie as novas imagens (JPG, JPEG, PNG ou WEBP).
+4. Apague as imagens antigas que nao quiser mais mostrar.
+5. Recarregue o site no navegador (Ctrl+F5).
+
+Observacoes:
+- A ordem do carrossel segue o nome do arquivo.
+- Exemplo de nomes: 01-banner.jpg, 02-banner.jpg, 03-banner.jpg
+- Nao precisa editar codigo para trocar as fotos.

@@ -1,24 +1,23 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Printer Goiânia Ltda - Datadores Industriais</title>
+  <title>Printer Goiânia - Venda e Assistência de Datadores Inkjet</title>
+  <meta name="description" content="Printer Goiânia: venda e assistência técnica de datadores inkjet com atendimento em Goiânia, Brasília e região." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
+          fontFamily: {
+            roboto: ['Roboto', 'sans-serif']
+          },
           colors: {
-            'brand-red': '#c64d41',
-            'brand-red-dark': '#a34e4c',
-            'brand-blue': '#2470c1',
-            'brand-blue-dark': '#2d4793',
-            'brand-blue-light': '#89abce',
-            'brand-cream': '#f0edeb',
-            'brand-terra': '#d39684',
-            'brand-brown': '#3d3832',
-            'brand-gray': '#9e9996',
+            brandBlue: '#083061',
+            brandBlueSoft: '#0f4588',
+            brandRed: '#c64d41',
+            brandRedDark: '#a34e4c'
           }
         }
       }
@@ -26,245 +25,272 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body class="bg-[#f3f4f6] text-slate-900 font-roboto">
-  <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur shadow-sm">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-      <div class="flex items-center gap-4">
-        <img src="images/logo.png" alt="Logo Printer Goiânia" class="h-12 w-auto object-contain" />
-        <a href="#home" class="text-lg font-bold uppercase tracking-[0.2em] text-[#c64d41]">
-          PRINTER GOIÂNIA LTDA
+<body class="font-roboto text-slate-900">
+  <div class="min-h-screen bg-[#f4f6fb]">
+    <section class="bg-[#083061] text-white">
+      <div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-2 text-sm md:flex-row md:items-center md:justify-between">
+        <ul class="flex flex-wrap items-center gap-4">
+          <li><a href="tel:+5562999999999" class="hover:text-[#ffddd8]"><i class="fa fa-phone"></i> (62) 9 9999-9999</a></li>
+          <li><a href="https://wa.me/5562999999999?text=Olá%20Printer%20Goiânia,%20gostaria%20de%20mais%20informações." target="_blank" rel="noopener" class="hover:text-[#ffddd8]"><i class="fa fa-whatsapp"></i> WhatsApp Comercial</a></li>
+        </ul>
+        <ul class="flex items-center gap-3 text-base">
+          <li><a href="#" aria-label="Facebook" class="hover:text-[#ffddd8]"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#" aria-label="Instagram" class="hover:text-[#ffddd8]"><i class="fa fa-instagram"></i></a></li>
+          <li><a href="#" aria-label="YouTube" class="hover:text-[#ffddd8]"><i class="fa fa-youtube"></i></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <header class="bg-white">
+      <div class="mx-auto max-w-7xl px-4 py-6 text-center">
+        <a href="#home" class="inline-flex items-center justify-center">
+          <img src="images/logo.png" alt="Logo Printer Goiânia" class="h-28 w-auto object-contain md:h-32" />
         </a>
       </div>
-      <nav class="hidden gap-8 md:flex text-sm text-slate-700">
-        <a href="#servicos" class="hover:text-[#2470c1]">Serviços</a>
-        <a href="#carrossel" class="hover:text-[#2470c1]">Galeria</a>
-        <a href="#depoimentos" class="hover:text-[#2470c1]">Depoimentos</a>
-        <a href="#orcamento" class="hover:text-[#2470c1]">Orçamento</a>
-      </nav>
-      <a href="#orcamento" class="rounded-full bg-[#2470c1] px-5 py-2 text-sm font-semibold text-white transition hover:bg-[#1a5aa0]">Peça Orçamento</a>
-    </div>
-  </header>
+    </header>
 
-  <main id="home">
-    <section class="relative overflow-hidden px-6 py-20 sm:py-28">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(36,112,193,0.14),_transparent_35%),linear-gradient(180deg,#f3f4f6_0%,#eef2f7_100%)]"></div>
-      <div class="relative mx-auto flex max-w-7xl flex-col gap-10 lg:flex-row lg:items-center">
-        <div class="max-w-2xl space-y-6">
-          <span class="inline-flex rounded-full bg-[#c64d41]/10 px-4 py-1 text-sm uppercase tracking-[0.25em] text-[#c64d41]">Manutenção industrial confiável</span>
-          <h1 class="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">Printer Goiânia Ltda: datadores industriais para pequenas e grandes empresas.</h1>
-          <p class="max-w-xl text-base leading-8 text-slate-600">Venda e manutenção de datadores industriais com atendimento em Goiânia, Brasília e todo o estado de Goiás. Orçamentos rápidos pelo WhatsApp e suporte técnico ágil.</p>
-          <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
-            <a href="#orcamento" class="inline-flex items-center justify-center rounded-full bg-[#2470c1] px-7 py-3 text-sm font-semibold text-white shadow-xl shadow-[#2470c1]/20 transition hover:bg-[#1a5aa0]">Solicitar orçamento</a>
-            <a href="#depoimentos" class="inline-flex items-center justify-center rounded-full border border-[#c64d41] px-7 py-3 text-sm font-semibold text-[#c64d41] transition hover:bg-[#c64d41] hover:text-white">Ver depoimentos</a>
-          </div>
-          <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
-            <div class="rounded-3xl border border-[#bfdbfe] bg-[#eff6ff] p-5 text-center shadow-sm shadow-slate-200/70">
-              <p class="text-3xl font-semibold text-[#2470c1]">+15</p>
-              <p class="mt-2 text-sm text-slate-400">Anos de experiência</p>
-            </div>
-            <div class="rounded-3xl border border-[#bfdbfe] bg-[#eff6ff] p-5 text-center shadow-sm shadow-slate-200/70">
-              <p class="text-3xl font-semibold text-[#c64d41]">Goiânia · Brasília</p>
-              <p class="mt-2 text-sm text-slate-400">Atendimento em todo Goiás</p>
-            </div>
-            <div class="rounded-3xl border border-[#bfdbfe] bg-[#eff6ff] p-5 text-center shadow-sm shadow-slate-200/70">
-              <p class="text-3xl font-semibold text-[#2470c1]">Datadores</p>
-              <p class="mt-2 text-sm text-slate-400">Venda e manutenção industrial</p>
-            </div>
-          </div>
+    <nav class="sticky top-0 z-50 border-y border-slate-200 bg-white/95 shadow-sm backdrop-blur">
+      <div class="mx-auto max-w-7xl px-4">
+        <ul class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 py-4 text-sm font-semibold uppercase tracking-[0.05em] text-slate-800">
+          <li><a href="quem-somos.html" class="hover:text-[#c64d41]">Quem Somos</a></li>
+          <li><a href="#produtos" class="hover:text-[#c64d41]">Venda</a></li>
+          <li><a href="#assistencia" class="hover:text-[#c64d41]">Assistência Técnica</a></li>
+          <li><a href="#vantagens" class="hover:text-[#c64d41]">Vantagens</a></li>
+          <li><a href="#depoimentos" class="hover:text-[#c64d41]">Depoimentos</a></li>
+          <li><a href="#contato" class="hover:text-[#c64d41]">Contato</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main id="home">
+      <section class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-[linear-gradient(120deg,rgba(8,48,97,0.88),rgba(15,69,136,0.62)_40%,rgba(198,77,65,0.38))] z-10"></div>
+        <div class="absolute inset-0 z-0">
+          <div id="carousel" class="carousel flex transition-transform duration-700"></div>
         </div>
 
-        <div class="relative max-w-2xl lg:ml-auto lg:w-[560px]">
-          <div class="absolute -right-12 top-10 h-48 w-48 rounded-full bg-[#ff6f3d]/10 blur-3xl"></div>
-          <div class="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-6 shadow-xl shadow-slate-200/70">
-            <div class="grid gap-4 sm:grid-cols-2">
-              <div class="space-y-4 rounded-[1.75rem] border border-slate-200 bg-[#f8fafc] p-5 text-slate-600 shadow-inner shadow-slate-200/60">
-                <p class="text-sm uppercase tracking-[0.2em] text-[#8bc6ff]">Passo a passo</p>
-                <h2 class="text-2xl font-bold text-slate-900">Diagnóstico rápido</h2>
-                <p class="text-sm leading-6">Inspeção completa de ativos, identificação de gargalos e plano de ação usando análise técnica.</p>
+        <div class="relative z-20 mx-auto grid min-h-[560px] w-full max-w-7xl items-center gap-6 px-4 py-16 lg:grid-cols-[1fr_auto]">
+          <div class="max-w-2xl text-white">
+            <p class="inline-flex rounded bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em]">Datadores Inkjet para Indústria</p>
+            <h1 class="mt-5 text-4xl font-black leading-tight md:text-6xl">Venda e Assistência de Datadores para elevar sua produção.</h1>
+            <p class="mt-5 max-w-xl text-base leading-8 text-slate-100">Estrutura técnica para atendimento rápido em Goiânia, Brasília e região, com foco em performance, confiabilidade e suporte contínuo.</p>
+            <div class="mt-8 flex flex-wrap gap-4">
+              <a href="#contato" class="inline-flex items-center rounded bg-[#c64d41] px-7 py-3 text-sm font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#a34e4c]">Entre em contato</a>
+              <a href="https://wa.me/5562999999999?text=Olá%20Printer%20Goiânia,%20quero%20um%20orçamento." target="_blank" rel="noopener" class="inline-flex items-center rounded bg-[#083061] px-7 py-3 text-sm font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#0f4588]"><i class="fa fa-whatsapp mr-2"></i> Falar no WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="flex flex-col items-center gap-4">
+            <button id="prevButton" class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#c64d41] text-2xl text-white shadow-lg transition hover:bg-[#a34e4c]" aria-label="Slide anterior">‹</button>
+            <div id="carouselDots" class="flex flex-col items-center gap-2 lg:gap-3"></div>
+            <button id="nextButton" class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#083061] text-2xl text-white shadow-lg transition hover:bg-[#0f4588]" aria-label="Próximo slide">›</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="assistencia" class="relative z-20 -mt-16 px-4">
+        <div class="mx-auto grid max-w-7xl gap-6 md:grid-cols-2">
+          <article class="rounded-lg border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/70">
+            <div class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded bg-[#083061]/10 text-2xl text-[#083061]">
+              <i class="fa fa-shopping-cart"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-[#083061]">Venda</h2>
+            <p class="mt-3 text-slate-600">Trabalhamos com datadores inkjet para ampliar produtividade e reduzir custos operacionais, com orientação técnica na escolha do equipamento ideal.</p>
+            <a href="#produtos" class="mt-5 inline-block text-sm font-bold uppercase tracking-[0.06em] text-[#c64d41] hover:text-[#a34e4c]">Mais informações</a>
+          </article>
+
+          <article class="rounded-lg border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/70">
+            <div class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded bg-[#c64d41]/10 text-2xl text-[#c64d41]">
+              <i class="fa fa-wrench"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-[#083061]">Assistência Técnica</h2>
+            <p class="mt-3 text-slate-600">Cobertura técnica com prioridade para chamados emergenciais e manutenção corretiva/preventiva em toda a região de atendimento da Printer Goiânia.</p>
+            <a href="#contato" class="mt-5 inline-block text-sm font-bold uppercase tracking-[0.06em] text-[#c64d41] hover:text-[#a34e4c]">Mais informações</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="produtos" class="px-4 pb-20 pt-20">
+        <div class="mx-auto max-w-7xl">
+          <div class="text-center">
+            <h2 class="text-4xl font-black text-[#083061]">Produtos à Venda</h2>
+          </div>
+          <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <article class="rounded-lg border border-slate-200 bg-white p-4 shadow-md shadow-slate-200/70">
+              <img src="https://limerpak.com/wp-content/uploads/2018/07/site_home1.jpg" alt="Datador Inkjet" class="h-52 w-full rounded object-cover" loading="lazy" />
+              <h3 class="mt-4 text-center text-base font-semibold text-[#083061]">Datador Inkjet industrial com instalação rápida e excelente qualidade de impressão.</h3>
+            </article>
+            <article class="rounded-lg border border-slate-200 bg-white p-4 shadow-md shadow-slate-200/70">
+              <img src="https://limerpak.com/wp-content/uploads/2018/09/index-esteira.jpg" alt="Esteira" class="h-52 w-full rounded object-cover" loading="lazy" />
+              <h3 class="mt-4 text-center text-base font-semibold text-[#083061]">Esteiras e acessórios para fluxo contínuo de codificação em linha de produção.</h3>
+            </article>
+            <article class="rounded-lg border border-slate-200 bg-white p-4 shadow-md shadow-slate-200/70">
+              <img src="https://limerpak.com/wp-content/uploads/2018/07/site_home3.jpg" alt="Rotuladora" class="h-52 w-full rounded object-cover" loading="lazy" />
+              <h3 class="mt-4 text-center text-base font-semibold text-[#083061]">Rotuladoras semiautomáticas para rotulagem e codificação com alta produtividade.</h3>
+            </article>
+            <article class="rounded-lg border border-slate-200 bg-white p-4 shadow-md shadow-slate-200/70">
+              <img src="https://limerpak.com/wp-content/uploads/2018/07/site_home4.jpg" alt="Rebobinadora" class="h-52 w-full rounded object-cover" loading="lazy" />
+              <h3 class="mt-4 text-center text-base font-semibold text-[#083061]">Rebobinadoras para preparar rótulos datados com agilidade e padrão de qualidade.</h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="depoimentos" class="bg-white px-4 py-20">
+        <div class="mx-auto max-w-7xl">
+          <div class="text-center">
+            <span class="text-sm font-bold uppercase tracking-[0.2em] text-[#c64d41]">Depoimentos</span>
+          </div>
+          <div class="mt-10 grid gap-6 md:grid-cols-3">
+            <article class="rounded-lg border border-slate-200 bg-[#f8fbff] p-8 text-center shadow-md">
+              <img src="images/resources/coment2.png" alt="Cliente 1" class="mx-auto h-20 w-20 rounded-full object-cover" onerror="this.style.display='none'" />
+              <h3 class="mt-4 text-xl font-bold text-[#083061]">Cliente Industrial</h3>
+              <p class="mt-3 text-slate-600">“Atendimento técnico ágil, suporte claro e excelente desempenho dos datadores na operação diária.”</p>
+            </article>
+            <article class="rounded-lg border border-slate-200 bg-[#f8fbff] p-8 text-center shadow-md">
+              <img src="images/resources/coment3.png" alt="Cliente 2" class="mx-auto h-20 w-20 rounded-full object-cover" onerror="this.style.display='none'" />
+              <h3 class="mt-4 text-xl font-bold text-[#083061]">Gestor de Produção</h3>
+              <p class="mt-3 text-slate-600">“Conseguimos reduzir paradas na linha com manutenção preventiva e suporte rápido da equipe Printer Goiânia.”</p>
+            </article>
+            <article class="rounded-lg border border-slate-200 bg-[#f8fbff] p-8 text-center shadow-md">
+              <img src="images/resources/coment1.png" alt="Cliente 3" class="mx-auto h-20 w-20 rounded-full object-cover" onerror="this.style.display='none'" />
+              <h3 class="mt-4 text-xl font-bold text-[#083061]">Coordenador Técnico</h3>
+              <p class="mt-3 text-slate-600">“Equipe confiável e consultiva. Resolveram nossa demanda de codificação com ótima relação custo-benefício.”</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="vantagens" class="px-4 py-20">
+        <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_1.2fr_1fr]">
+          <div class="space-y-5">
+            <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-md">
+              <h3 class="text-xl font-bold text-[#083061]">Rápida distribuição</h3>
+              <p class="mt-2 text-slate-600">Infraestrutura para entrega e instalação dentro de prazos curtos.</p>
+            </article>
+            <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-md">
+              <h3 class="text-xl font-bold text-[#083061]">Confiabilidade</h3>
+              <p class="mt-2 text-slate-600">Equipamentos revisados e suporte contínuo para operação estável.</p>
+            </article>
+          </div>
+
+          <div class="overflow-hidden rounded-xl border border-slate-200 bg-white p-4 shadow-lg">
+            <div class="video-frame flex h-full min-h-[280px] items-center justify-center rounded-lg bg-[linear-gradient(160deg,#083061,#0f4588)] px-6 text-center text-white">
+              <div>
+                <i class="fa fa-play-circle text-5xl text-white/90"></i>
+                <p class="mt-4 text-lg font-semibold">Apresentação dos Datadores e Aplicações</p>
+                <p class="mt-2 text-sm text-slate-100">Integração em linhas de produção com foco em precisão e produtividade.</p>
               </div>
-              <div class="space-y-4 rounded-[1.75rem] border border-slate-200 bg-[#f8fafc] p-5 text-slate-600 shadow-inner shadow-slate-200/60">
-                <p class="text-sm uppercase tracking-[0.2em] text-[#ff6f3d]">Controle</p>
-                <h2 class="text-2xl font-bold text-slate-900">Intervenção segura</h2>
-                <p class="text-sm leading-6">Manutenção preventiva e corretiva em máquinas e sistemas com foco em desempenho.</p>
-              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <section id="servicos" class="border-t border-slate-200 px-6 py-20">
-      <div class="mx-auto max-w-7xl">
-        <div class="mb-12 flex flex-col gap-3 text-center">
-          <span class="text-sm uppercase tracking-[0.3em] text-[#2470c1]">Nossos serviços</span>
-          <h2 class="text-3xl font-semibold text-slate-900 sm:text-4xl">Manutenção industrial com robustez e precisão técnica</h2>
-        </div>
-        <div class="grid gap-6 lg:grid-cols-3">
-          <article class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/70 transition hover:-translate-y-1 hover:border-[#c64d41]/60">
-            <p class="text-sm uppercase tracking-[0.3em] text-[#c64d41]">Venda</p>
-            <h3 class="mt-4 text-2xl font-semibold text-slate-900">Datadores industriais</h3>
-            <p class="mt-4 text-slate-600">Fornecimento de datadores industriais para pequenas e grandes empresas com qualidade e entrega rápida.</p>
-          </article>
-          <article class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/70 transition hover:-translate-y-1 hover:border-[#2470c1]/60">
-            <p class="text-sm uppercase tracking-[0.3em] text-[#2470c1]">Manutenção</p>
-            <h3 class="mt-4 text-2xl font-semibold text-slate-900">Datadores e ativos</h3>
-            <p class="mt-4 text-slate-600">Serviços técnicos especializados em manutenção corretiva e preventiva de datadores industriais.</p>
-          </article>
-          <article class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/70 transition hover:-translate-y-1 hover:border-[#c64d41]/60">
-            <p class="text-sm uppercase tracking-[0.3em] text-[#c64d41]">Suporte</p>
-            <h3 class="mt-4 text-2xl font-semibold text-slate-900">Atendimento regional</h3>
-            <p class="mt-4 text-slate-600">Atendimento em Goiânia, Brasília e todos os municípios de Goiás com equipe disponível.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="carrossel" class="relative overflow-hidden px-6 py-20 text-slate-900">
-      <div class="mx-auto max-w-7xl">
-        <div class="mb-12 text-center">
-          <span class="text-sm uppercase tracking-[0.3em] text-[#c64d41]">Galeria industrial</span>
-          <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">Carrossel de projetos e manutenção</h2>
-          <p class="mx-auto mt-4 max-w-2xl text-slate-600">Veja algumas imagens que representam nossa atuação em plantas industriais, manutenção de engrenagens e sistemas elétricos.</p>
-        </div>
-        <div class="relative rounded-[2rem] border border-slate-200 bg-white p-5 shadow-xl shadow-slate-200/70">
-          <div class="relative overflow-hidden rounded-[1.75rem]">
-            <div id="carousel" class="carousel flex transition-transform duration-700"></div>
-          </div>
-          <div class="mt-6 flex items-center justify-between gap-3">
-            <button id="prevButton" class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#c64d41] text-xl text-white shadow-lg shadow-slate-200/70 transition hover:bg-[#a34e4c]">‹</button>
-            <div class="flex flex-1 items-center justify-center gap-3">
-              <span class="dot h-3 w-3 rounded-full bg-[#2470c1]/50"></span>
-              <span class="dot h-3 w-3 rounded-full bg-[#2470c1]/20"></span>
-              <span class="dot h-3 w-3 rounded-full bg-[#2470c1]/20"></span>
-            </div>
-            <button id="nextButton" class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#2470c1] text-xl text-white shadow-lg shadow-slate-200/70 transition hover:bg-[#1a5aa0]">›</button>
+          <div class="space-y-5">
+            <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-md">
+              <h3 class="text-xl font-bold text-[#083061]">Custo-benefício</h3>
+              <p class="mt-2 text-slate-600">Soluções técnicas com excelente retorno para operação industrial.</p>
+            </article>
+            <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-md">
+              <h3 class="text-xl font-bold text-[#083061]">Assistência especializada</h3>
+              <p class="mt-2 text-slate-600">Equipe credenciada para manutenção corretiva e preventiva.</p>
+            </article>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="depoimentos" class="border-t border-slate-200 px-6 py-20">
-      <div class="mx-auto max-w-7xl">
-        <div class="mb-12 text-center">
-          <span class="text-sm uppercase tracking-[0.3em] text-[#2470c1]">Depoimentos</span>
-          <h2 class="mt-3 text-3xl font-semibold text-slate-900 sm:text-4xl">Comentários positivos de clientes industriais</h2>
-        </div>
-        <div class="grid gap-6 lg:grid-cols-3">
-          <blockquote class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/70">
-            <p class="text-lg leading-8 text-slate-700">"A Printer reduziu nossas paradas não planejadas com um serviço rápido e uma equipe claramente preparada para o ambiente industrial."</p>
-            <footer class="mt-6 text-sm text-slate-500">— Gerente de manutenção, fábrica automotiva</footer>
-          </blockquote>
-          <blockquote class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/70">
-            <p class="text-lg leading-8 text-slate-700">"O orçamento chegou em minutos pelo WhatsApp e o reparo foi feito sem comprometer a produção."</p>
-            <footer class="mt-6 text-sm text-slate-500">— Diretor industrial, metalurgia</footer>
-          </blockquote>
-          <blockquote class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/70">
-            <p class="text-lg leading-8 text-slate-700">"Atendimento de emergência impecável. Profissionalismo, controle e resultado técnico."</p>
-            <footer class="mt-6 text-sm text-slate-500">— Coordenador de utilidades, papel e celulose</footer>
-          </blockquote>
-        </div>
-      </div>
-    </section>
-
-    <section id="orcamento" class="px-6 py-20">
-      <div class="mx-auto max-w-6xl rounded-[2rem] border border-slate-200 bg-white p-10 shadow-xl shadow-slate-200/70">
-        <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <section class="bg-white px-4 py-20">
+        <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2">
           <div>
-            <span class="text-sm uppercase tracking-[0.3em] text-[#c64d41]">Orçamento</span>
-            <h2 class="mt-4 text-3xl font-semibold text-slate-900 sm:text-4xl">Consulta de orçamento direto no WhatsApp</h2>
-            <p class="mt-5 max-w-xl text-slate-600">Descreva a necessidade, envie fotos ou documentos, e nossa equipe responde com proposta técnica e valores. Rápido, transparente e sem burocracia.</p>
-            <form id="quoteForm" class="mt-8 grid gap-4 rounded-[1.75rem] border border-slate-200 bg-[#f8fafc] p-6 shadow-inner shadow-slate-200/60">
-              <div class="grid gap-4 sm:grid-cols-2">
-                <label class="grid gap-2 text-sm text-slate-700">
-                  Nome completo
-                  <input name="nome" type="text" required class="rounded-3xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#2470c1] focus:ring-2 focus:ring-[#2470c1]/20" placeholder="Seu nome" />
-                </label>
-                <label class="grid gap-2 text-sm text-slate-700">
-                  Empresa / Unidade
-                  <input name="empresa" type="text" required class="rounded-3xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#2470c1] focus:ring-2 focus:ring-[#2470c1]/20" placeholder="Nome da empresa" />
-                </label>
-              </div>
-              <div class="grid gap-4 sm:grid-cols-2">
-                <label class="grid gap-2 text-sm text-slate-700">
-                  Telefone / WhatsApp
-                  <input name="contato" type="tel" required class="rounded-3xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#2470c1] focus:ring-2 focus:ring-[#2470c1]/20" placeholder="(11) 9xxxx-xxxx" />
-                </label>
-                <label class="grid gap-2 text-sm text-slate-700">
-                  E-mail
-                  <input name="email" type="email" class="rounded-3xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#2470c1] focus:ring-2 focus:ring-[#2470c1]/20" placeholder="email@empresa.com" />
-                </label>
-              </div>
-              <div class="grid gap-4 sm:grid-cols-2">
-                <label class="grid gap-2 text-sm text-slate-700">
-                  Máquina / Ativo
-                  <input name="ativo" type="text" required class="rounded-3xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#2470c1] focus:ring-2 focus:ring-[#2470c1]/20" placeholder="Ex: bomba, compressor" />
-                </label>
-                <label class="grid gap-2 text-sm text-slate-700">
-                  Modelo / Código
-                  <input name="modelo" type="text" class="rounded-3xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#2470c1] focus:ring-2 focus:ring-[#2470c1]/20" placeholder="Modelo ou código" />
-                </label>
-              </div>
-              <label class="grid gap-2 text-sm text-slate-700">
-                Especificação da máquina
-                <textarea name="especificacao" rows="3" class="rounded-3xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#2470c1] focus:ring-2 focus:ring-[#2470c1]/20" placeholder="Capacidade, potência, fabricante etc."></textarea>
-              </label>
-              <label class="grid gap-2 text-sm text-slate-700">
-                Relato do problema
-                <textarea name="problema" rows="4" required class="rounded-3xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#2470c1] focus:ring-2 focus:ring-[#2470c1]/20" placeholder="Explique a falha, ruído ou condição observada."></textarea>
-              </label>
-              <label class="grid gap-2 text-sm text-slate-700">
-                Prioridade
-                <select name="prioridade" class="rounded-3xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-[#2470c1] focus:ring-2 focus:ring-[#2470c1]/20">
-                  <option>Normal</option>
-                  <option>Urgente</option>
-                  <option>Emergencial</option>
-                </select>
-              </label>
-              <button type="submit" class="rounded-3xl bg-[#2470c1] px-6 py-4 text-center font-semibold text-white transition hover:bg-[#1a5aa0]">Enviar orçamento detalhado</button>
-            </form>
-            <div class="mt-6 grid gap-4 sm:grid-cols-2">
-              <a href="https://wa.me/5511999999999?text=Ol%C3%A1%20Printer%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20manuten%C3%A7%C3%A3o%20industrial." target="_blank" class="rounded-3xl bg-[#c64d41] px-6 py-4 text-center font-semibold text-white transition hover:bg-[#a34e4c]">Orçamento rápido</a>
-              <a href="https://wa.me/5511999999999?text=Preciso%20de%20assist%C3%AAncia%20t%C3%A9cnica%20industrial%20com%20prioridade." target="_blank" class="rounded-3xl bg-[#2470c1] px-6 py-4 text-center font-semibold text-white transition hover:bg-[#1a5aa0]">Falar com o time</a>
-            </div>
+            <h2 class="text-4xl font-black text-[#083061]">Sobre a Printer Goiânia</h2>
+            <p class="mt-5 text-slate-600 leading-8">A Printer Goiânia atua com venda e assistência técnica de datadores inkjet para indústrias e empresas que precisam de codificação eficiente em embalagens e rótulos. Nossa equipe oferece suporte consultivo e atendimento técnico com agilidade.</p>
+            <a href="quem-somos.html" class="mt-7 inline-flex rounded bg-[#083061] px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#0f4588]">Leia mais</a>
           </div>
-          <div class="rounded-[2rem] bg-[#f1f5f9] p-8 shadow-inner shadow-slate-200/70">
-            <div class="space-y-5">
-              <div class="rounded-3xl bg-white p-6 shadow-sm shadow-slate-200/70">
-                <p class="text-sm uppercase tracking-[0.3em] text-[#2470c1]">Industrial</p>
-                <h3 class="mt-4 text-2xl font-semibold text-slate-900">Ativo mais forte</h3>
-                <p class="mt-3 text-slate-600">Garantimos a integridade de bombas, compressores, motores e estruturas com manutenção preventiva e corretiva dedicada.</p>
-              </div>
-              <div class="flex flex-col gap-4 rounded-3xl bg-white p-6 text-slate-700 shadow-sm shadow-slate-200/70 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <p class="text-sm uppercase tracking-[0.3em] text-[#c64d41]">Contato direto</p>
-                  <p class="mt-3 text-lg font-semibold text-slate-900">+55 (11) 99999-9999</p>
-                </div>
-                <a href="https://wa.me/5511999999999" target="_blank" class="inline-flex items-center justify-center rounded-full bg-[#2470c1] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1a5aa0]">WhatsApp</a>
-              </div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="rounded-lg border border-slate-200 bg-[#f8fbff] p-6 text-center shadow-sm">
+              <i class="fa fa-diamond text-3xl text-[#c64d41]"></i>
+              <h3 class="mt-4 text-lg font-bold text-[#083061]">Garantia de qualidade</h3>
+            </div>
+            <div class="rounded-lg border border-slate-200 bg-[#f8fbff] p-6 text-center shadow-sm">
+              <i class="fa fa-thumbs-up text-3xl text-[#c64d41]"></i>
+              <h3 class="mt-4 text-lg font-bold text-[#083061]">100% de satisfação</h3>
+            </div>
+            <div class="rounded-lg border border-slate-200 bg-[#f8fbff] p-6 text-center shadow-sm sm:col-span-2">
+              <i class="fa fa-cogs text-3xl text-[#c64d41]"></i>
+              <h3 class="mt-4 text-lg font-bold text-[#083061]">Assistência personalizada</h3>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <footer class="border-t border-slate-200 bg-[#f8fafc] px-6 py-8 text-slate-500">
-    <div class="mx-auto grid max-w-7xl gap-4 text-center md:grid-cols-[1.2fr_0.8fr] md:text-left">
-      <div>
-        <img src="images/logo.png" alt="Logo Printer Goiânia" class="mx-auto mb-3 h-10 w-auto md:mx-0" />
-        <p>© 2026 Printer Goiânia Ltda | Venda e manutenção de datadores industriais.</p>
-        <p class="mt-2 text-sm text-slate-400">Sede: R. Jequitibá, 543 - Quadra 12 Lote 8/9 - Jardim Mariliza, Goiânia - GO</p>
-        <p class="text-sm text-slate-400">CNPJ 36.853.936/0001-02</p>
+      <section class="px-4 py-20">
+        <div class="mx-auto max-w-7xl text-center">
+          <h2 class="text-4xl font-black text-[#083061]">Segmentos de Aplicação</h2>
+          <p class="mx-auto mt-4 max-w-3xl text-slate-600">O datador inkjet pode ser utilizado em cosméticos, alimentos, farmacêutico, química, logística, bebidas e diversas linhas de embalagem.</p>
+          <div class="mt-10 grid gap-4 sm:grid-cols-3 lg:grid-cols-6">
+            <div class="rounded-lg border border-slate-200 bg-white p-4 text-sm font-semibold text-[#083061]">Alimentos</div>
+            <div class="rounded-lg border border-slate-200 bg-white p-4 text-sm font-semibold text-[#083061]">Bebidas</div>
+            <div class="rounded-lg border border-slate-200 bg-white p-4 text-sm font-semibold text-[#083061]">Farmacêutico</div>
+            <div class="rounded-lg border border-slate-200 bg-white p-4 text-sm font-semibold text-[#083061]">Cosméticos</div>
+            <div class="rounded-lg border border-slate-200 bg-white p-4 text-sm font-semibold text-[#083061]">Químico</div>
+            <div class="rounded-lg border border-slate-200 bg-white p-4 text-sm font-semibold text-[#083061]">Logística</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contato" class="bg-[#0b1d34] text-slate-100">
+      <div class="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-[1.5fr_1fr_1fr]">
+        <div>
+          <h3 class="text-2xl font-bold">Printer Goiânia</h3>
+          <ul class="mt-5 space-y-3 text-sm text-slate-300">
+            <li><i class="fa fa-map-marker text-[#c64d41]"></i> R. Jequitibá, 543 - Jardim Mariliza, Goiânia - GO</li>
+            <li><i class="fa fa-phone text-[#c64d41]"></i> +55 (62) 9 9999-9999</li>
+            <li><i class="fa fa-envelope text-[#c64d41]"></i> contato@printergoiania.com.br</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold">Acesso Rápido</h3>
+          <ul class="mt-5 space-y-2 text-sm text-slate-300">
+            <li><a href="quem-somos.html" class="hover:text-white"><i class="fa fa-angle-double-right"></i> Sobre Nós</a></li>
+            <li><a href="#produtos" class="hover:text-white"><i class="fa fa-angle-double-right"></i> Venda</a></li>
+            <li><a href="#assistencia" class="hover:text-white"><i class="fa fa-angle-double-right"></i> Assistência Técnica</a></li>
+            <li><a href="#vantagens" class="hover:text-white"><i class="fa fa-angle-double-right"></i> Vantagens</a></li>
+            <li><a href="#depoimentos" class="hover:text-white"><i class="fa fa-angle-double-right"></i> Depoimentos</a></li>
+            <li><a href="#contato" class="hover:text-white"><i class="fa fa-angle-double-right"></i> Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold">Newsletter</h3>
+          <p class="mt-5 text-sm text-slate-300">Receba novidades e conteúdos técnicos por e-mail.</p>
+          <form class="mt-4 flex gap-2">
+            <input type="email" placeholder="Seu e-mail" class="w-full rounded border border-slate-500 bg-[#102845] px-4 py-2 text-sm text-white outline-none placeholder:text-slate-400" />
+            <button type="button" class="rounded bg-[#c64d41] px-4 py-2 text-sm font-bold text-white transition hover:bg-[#a34e4c]">Enviar</button>
+          </form>
+          <div class="mt-5 flex gap-3 text-lg">
+            <a href="#" class="text-slate-300 transition hover:text-white" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="text-slate-300 transition hover:text-white" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+            <a href="#" class="text-slate-300 transition hover:text-white" aria-label="YouTube"><i class="fa fa-youtube"></i></a>
+          </div>
+        </div>
       </div>
-      <div class="space-y-1">
-        <p class="text-sm">Atendimento: Goiânia · Brasília · todo o estado de Goiás</p>
-        <p class="text-sm">Desenvolvido pela JFtechy</p>
+
+      <div class="border-t border-slate-700/70 py-8">
+        <div class="mx-auto flex max-w-7xl flex-col items-center justify-center gap-4 px-4 text-center">
+          <img src="images/logo.png" alt="Logo Printer Goiânia" class="h-12 w-auto object-contain" />
+          <p class="text-sm text-slate-400">Copyright © 2026 Printer Goiânia. Todos os direitos reservados.</p>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
+
+    <a href="https://wa.me/5562999999999?text=Olá%20Printer%20Goiânia,%20preciso%20de%20atendimento." target="_blank" rel="noopener" class="fixed bottom-5 right-5 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-3xl text-white shadow-xl hover:scale-105" aria-label="WhatsApp">
+      <i class="fa fa-whatsapp"></i>
+    </a>
+  </div>
 
   <script src="js/script.js"></script>
 </body>
