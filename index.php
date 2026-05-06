@@ -1,4 +1,33 @@
-﻿<!DOCTYPE html>
+﻿<?php
+
+require_once __DIR__ . '/config/helpers.php';
+
+$logoSrc = getImagem('logo_site', 'images/logo.png');
+$logoAlt = getAltImagem('logo_site', 'Logo da Printer Goiânia');
+
+$bannerSrc = getImagem('banner_principal', 'images/banner/01-banner.jpg');
+$bannerAlt = getAltImagem('banner_principal', 'Banner principal da empresa');
+
+$sobreSrc = getImagem('imagem_sobre', 'images/banner/02-banner.jpg');
+$sobreAlt = getAltImagem('imagem_sobre', 'Imagem institucional da Printer Goiânia');
+
+$servico1Src = getImagem('servico_1', 'images/banner/01-banner.jpg');
+$servico1Alt = getAltImagem('servico_1', 'Imagem do serviço 1');
+
+$servico2Src = getImagem('servico_2', 'images/banner/03-banner.jpg');
+$servico2Alt = getAltImagem('servico_2', 'Imagem do serviço 2');
+
+$servico3Src = getImagem('servico_3', 'images/banner/04-banner.jpg');
+$servico3Alt = getAltImagem('servico_3', 'Imagem do serviço 3');
+
+$servico4Src = getImagem('servico_4', 'images/banner/02-banner.jpg');
+$servico4Alt = getAltImagem('servico_4', 'Imagem do serviço 4');
+
+$heroTitulo = getTextoSite('hero_titulo', 'Venda e Assistência de Datadores para elevar sua produção.');
+$heroSubtitulo = getTextoSite('hero_subtitulo', 'Estrutura técnica para atendimento rápido em Goiânia, Brasília e região, com foco em performance, confiabilidade e suporte contínuo.');
+$sobreTexto = getTextoSite('sobre_texto', 'A Printer Goiânia atua com venda e assistência técnica de datadores inkjet para indústrias e empresas que precisam de codificação eficiente em embalagens e rótulos. Nossa equipe oferece suporte consultivo e atendimento técnico com agilidade.');
+?>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -41,8 +70,8 @@
 
     <header class="bg-white">
       <div class="mx-auto max-w-7xl px-4 py-6 text-center">
-        <a href="#home" class="inline-flex items-center justify-center">
-          <img src="images/logo.png" alt="Logo da Printer Goiânia" class="h-28 w-auto object-contain md:h-32" />
+        <a href="index.php#home" class="inline-flex items-center justify-center">
+          <img src="<?= e($logoSrc) ?>" alt="<?= e($logoAlt) ?>" class="h-28 w-auto object-contain md:h-32" />
         </a>
       </div>
     </header>
@@ -62,14 +91,14 @@
 
     <main id="home">
       <section class="relative overflow-hidden">
-        <img src="images/banner/01-banner.jpg" alt="Banner principal da empresa" class="h-[560px] w-full object-cover md:h-[620px]" />
+        <img src="<?= e($bannerSrc) ?>" alt="<?= e($bannerAlt) ?>" class="h-[560px] w-full object-cover md:h-[620px]" />
         <div class="absolute inset-0 z-10 bg-[linear-gradient(120deg,rgba(8,48,97,0.88),rgba(15,69,136,0.62)_40%,rgba(198,77,65,0.38))]"></div>
 
         <div class="absolute inset-0 z-20 mx-auto grid w-full max-w-7xl items-center gap-6 px-4 py-16 lg:grid-cols-[1fr_auto]">
           <div class="max-w-2xl text-white">
             <p class="inline-flex rounded bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em]">Datadores Inkjet para Indústria</p>
-            <h1 class="mt-5 text-4xl font-black leading-tight md:text-6xl">Venda e Assistência de Datadores para elevar sua produção.</h1>
-            <p class="mt-5 max-w-xl text-base leading-8 text-slate-100">Estrutura técnica para atendimento rápido em Goiânia, Brasília e região, com foco em performance, confiabilidade e suporte contínuo.</p>
+            <h1 class="mt-5 text-4xl font-black leading-tight md:text-6xl"><?= e($heroTitulo) ?></h1>
+            <p class="mt-5 max-w-xl text-base leading-8 text-slate-100"><?= e($heroSubtitulo) ?></p>
             <div class="mt-8 flex flex-wrap gap-4">
               <a href="#contato" class="inline-flex items-center rounded bg-[#c64d41] px-7 py-3 text-sm font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#a34e4c]">Entre em contato</a>
               <a href="https://wa.me/5562999999999?text=Olá%20Printer%20Goiânia,%20quero%20um%20orçamento." target="_blank" rel="noopener" class="inline-flex items-center rounded bg-[#083061] px-7 py-3 text-sm font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#0f4588]"><i class="fa fa-whatsapp mr-2"></i> Falar no WhatsApp</a>
@@ -107,19 +136,19 @@
           </div>
           <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <article class="rounded-lg border border-slate-200 bg-white p-4 shadow-md shadow-slate-200/70">
-              <img src="images/banner/01-banner.jpg" alt="Imagem do serviço 1" class="h-52 w-full rounded object-cover" loading="lazy" />
+              <img src="<?= e($servico1Src) ?>" alt="<?= e($servico1Alt) ?>" class="h-52 w-full rounded object-cover" loading="lazy" />
               <h3 class="mt-4 text-center text-base font-semibold text-[#083061]">Datador Inkjet industrial com instalação rápida e excelente qualidade de impressão.</h3>
             </article>
             <article class="rounded-lg border border-slate-200 bg-white p-4 shadow-md shadow-slate-200/70">
-              <img src="images/banner/03-banner.jpg" alt="Imagem do serviço 2" class="h-52 w-full rounded object-cover" loading="lazy" />
+              <img src="<?= e($servico2Src) ?>" alt="<?= e($servico2Alt) ?>" class="h-52 w-full rounded object-cover" loading="lazy" />
               <h3 class="mt-4 text-center text-base font-semibold text-[#083061]">Esteiras e acessórios para fluxo contínuo de codificação em linha de produção.</h3>
             </article>
             <article class="rounded-lg border border-slate-200 bg-white p-4 shadow-md shadow-slate-200/70">
-              <img src="images/banner/04-banner.jpg" alt="Imagem do serviço 3" class="h-52 w-full rounded object-cover" loading="lazy" />
+              <img src="<?= e($servico3Src) ?>" alt="<?= e($servico3Alt) ?>" class="h-52 w-full rounded object-cover" loading="lazy" />
               <h3 class="mt-4 text-center text-base font-semibold text-[#083061]">Rotuladoras semiautomáticas para rotulagem e codificação com alta produtividade.</h3>
             </article>
             <article class="rounded-lg border border-slate-200 bg-white p-4 shadow-md shadow-slate-200/70">
-              <img src="images/banner/02-banner.jpg" alt="Imagem do serviço 4" class="h-52 w-full rounded object-cover" loading="lazy" />
+              <img src="<?= e($servico4Src) ?>" alt="<?= e($servico4Alt) ?>" class="h-52 w-full rounded object-cover" loading="lazy" />
               <h3 class="mt-4 text-center text-base font-semibold text-[#083061]">Rebobinadoras para preparar rótulos datados com agilidade e padrão de qualidade.</h3>
             </article>
           </div>
@@ -162,7 +191,7 @@
           </div>
 
           <div class="overflow-hidden rounded-xl border border-slate-200 bg-white p-4 shadow-lg">
-            <img src="images/banner/02-banner.jpg" alt="Imagem institucional da Printer Goiânia" class="h-full min-h-[280px] w-full rounded-lg object-cover" loading="lazy" />
+            <img src="<?= e($sobreSrc) ?>" alt="<?= e($sobreAlt) ?>" class="h-full min-h-[280px] w-full rounded-lg object-cover" loading="lazy" />
           </div>
 
           <div class="space-y-5">
@@ -182,7 +211,7 @@
         <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2">
           <div>
             <h2 class="text-4xl font-black text-[#083061]">Sobre a Printer Goiânia</h2>
-            <p class="mt-5 text-slate-600 leading-8">A Printer Goiânia atua com venda e assistência técnica de datadores inkjet para indústrias e empresas que precisam de codificação eficiente em embalagens e rótulos. Nossa equipe oferece suporte consultivo e atendimento técnico com agilidade.</p>
+            <p class="mt-5 text-slate-600 leading-8"><?= e($sobreTexto) ?></p>
             <a href="quem-somos.html" class="mt-7 inline-flex rounded bg-[#083061] px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#0f4588]">Leia mais</a>
           </div>
           <div class="grid gap-4 sm:grid-cols-2">
@@ -258,7 +287,7 @@
 
       <div class="border-t border-slate-700/70 py-8">
         <div class="mx-auto flex max-w-7xl flex-col items-center justify-center gap-4 px-4 text-center">
-          <img src="images/logo.png" alt="Logo da Printer Goiânia" class="h-12 w-auto object-contain" />
+          <img src="<?= e($logoSrc) ?>" alt="<?= e($logoAlt) ?>" class="h-12 w-auto object-contain" />
           <p class="text-sm text-slate-400">Copyright © 2026 Printer Goiânia. Todos os direitos reservados.</p>
         </div>
       </div>
@@ -271,6 +300,4 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
-
-
 

@@ -1,0 +1,13 @@
+﻿Options -Indexes
+
+# Impede execução de scripts perigosos dentro de uploads
+<FilesMatch "\.(php|phtml|phar|pl|py|cgi|asp|aspx|js|html|htm|exe|sh)$">
+  Require all denied
+</FilesMatch>
+
+# Desativa engine PHP em servidores Apache compatíveis
+<IfModule mod_php.c>
+  php_flag engine off
+</IfModule>
+
+AddType text/plain .php .phtml .phar .pl .py .cgi .asp .aspx .js .html .htm .exe .sh
