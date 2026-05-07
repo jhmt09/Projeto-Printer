@@ -1,13 +1,15 @@
 <?php
 
-// Configurações do banco de dados (edite com seus dados do phpMyAdmin/HostGator).
+declare(strict_types=1);
+
+// Configuracoes do banco de dados (preencha com os dados do seu cPanel/phpMyAdmin).
 $db_host = 'localhost';
 $db_name = 'NOME_DO_BANCO';
 $db_user = 'USUARIO_DO_BANCO';
 $db_pass = 'SENHA_DO_BANCO';
 
 /**
- * Retorna conexão PDO única para a aplicação.
+ * Retorna conexao PDO unica para a aplicacao.
  */
 function getPDOConnection(): PDO
 {
