@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 // Configurações do banco de dados (edite com seus dados do phpMyAdmin/HostGator).
 $db_host = 'localhost';
@@ -30,4 +30,3 @@ function getPDOConnection(): PDO
     $pdo = new PDO($dsn, $db_user, $db_pass, $options);
     return $pdo;
 }
-

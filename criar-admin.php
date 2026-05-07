@@ -1,6 +1,7 @@
-﻿<?php
+<?php
 
 require_once __DIR__ . '/config/helpers.php';
+enviarHeadersNoCache();
 
 $mensagem = '';
 $tipo = 'success';
@@ -21,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $mensagem === '') {
 
     if (!validarCsrfToken(is_string($token) ? $token : null)) {
         $tipo = 'error';
-        $mensagem = 'Token de segurança inválido.';
+        $mensagem = 'Token de segurança inválido. Recarregue a página (Ctrl+F5) e tente novamente. Se persistir, limpe cookies do domínio.';
     } else {
         $nome = limparTexto((string) ($_POST['nome'] ?? ''), 120);
         $email = filter_var(trim((string) ($_POST['email'] ?? '')), FILTER_VALIDATE_EMAIL);

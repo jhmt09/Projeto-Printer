@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /**
  * Inicializa sessão com configurações seguras.
@@ -9,7 +9,10 @@ function iniciarSessaoSegura(): void
         return;
     }
 
-    $isHttps = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
+    $isHttps =
+        (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ||
+        (isset($_SERVER['SERVER_PORT']) && (int) $_SERVER['SERVER_PORT'] === 443) ||
+        (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower((string) $_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https');
 
     ini_set('session.use_strict_mode', '1');
     ini_set('session.use_only_cookies', '1');
@@ -28,6 +31,17 @@ function iniciarSessaoSegura(): void
 }
 
 iniciarSessaoSegura();
+
+/**
+ * Evita cache de páginas sensíveis (login/forms com CSRF).
+ */
+function enviarHeadersNoCache(): void
+{
+    header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+    header('Cache-Control: post-check=0, pre-check=0', false);
+    header('Pragma: no-cache');
+    header('Expires: 0');
+}
 
 function usuarioLogado(): bool
 {

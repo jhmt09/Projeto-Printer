@@ -1,6 +1,7 @@
-﻿<?php
+<?php
 
 require_once __DIR__ . '/_init.php';
+enviarHeadersNoCache();
 
 if (usuarioLogado()) {
     redirecionar('dashboard.php');
