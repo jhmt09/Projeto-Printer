@@ -1,23 +1,25 @@
 <?php
 
+declare(strict_types=1);
+
 require_once __DIR__ . '/_init.php';
 
 protegerPagina();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    setFlash('error', 'Método inválido para upload de imagem.');
+    setFlash('error', 'Metodo invalido para upload de imagem.');
     redirecionar('dashboard.php#imagens');
 }
 
 $token = $_POST['csrf_token'] ?? null;
 if (!validarCsrfToken(is_string($token) ? $token : null)) {
-    setFlash('error', 'Token de segurança inválido.');
+    setFlash('error', 'Token de seguranca invalido.');
     redirecionar('dashboard.php#imagens');
 }
 
 $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 if (!$id) {
-    setFlash('error', 'Identificador de imagem inválido.');
+    setFlash('error', 'Identificador de imagem invalido.');
     redirecionar('dashboard.php#imagens');
 }
 
@@ -32,7 +34,7 @@ try {
     $imagem = $stmt->fetch();
 
     if (!is_array($imagem)) {
-        setFlash('error', 'Imagem não encontrada para atualização.');
+        setFlash('error', 'Imagem nao encontrada para atualizacao.');
         redirecionar('dashboard.php#imagens');
     }
 
@@ -43,7 +45,7 @@ try {
 
     if ($temUpload) {
         if ((int) $arquivo['error'] !== UPLOAD_ERR_OK) {
-            throw new RuntimeException('Falha no envio do arquivo. Código: ' . (int) $arquivo['error']);
+            throw new RuntimeException('Falha no envio do arquivo. Codigo: ' . (int) $arquivo['error']);
         }
 
         $maxMb = (float) ($imagem['tamanho_max_mb'] ?? 2);
@@ -60,12 +62,12 @@ try {
         $extensoesBloqueadas = ['php', 'phtml', 'js', 'html', 'exe', 'sh'];
 
         if (in_array($ext, $extensoesBloqueadas, true) || !in_array($ext, $extensoesPermitidas, true)) {
-            throw new RuntimeException('Extensão de arquivo não permitida. Use jpg, jpeg, png ou webp.');
+            throw new RuntimeException('Extensao de arquivo nao permitida. Use jpg, jpeg, png ou webp.');
         }
 
         $tmpPath = (string) ($arquivo['tmp_name'] ?? '');
         if ($tmpPath === '' || !is_uploaded_file($tmpPath)) {
-            throw new RuntimeException('Arquivo temporário inválido.');
+            throw new RuntimeException('Arquivo temporario invalido.');
         }
 
         $finfo = new finfo(FILEINFO_MIME_TYPE);
@@ -78,17 +80,21 @@ try {
         ];
 
         if (!isset($mimePermitido[$mime]) || !in_array($ext, $mimePermitido[$mime], true)) {
-            throw new RuntimeException('Tipo de imagem inválido.');
+            throw new RuntimeException('Tipo de imagem invalido.');
         }
 
-        $uploadsDir = realpath(__DIR__ . '/../uploads');
-        if ($uploadsDir === false) {
-            throw new RuntimeException('Pasta /uploads não encontrada.');
+        $uploadsDir = __DIR__ . '/../uploads';
+        if (!is_dir($uploadsDir) && !mkdir($uploadsDir, 0755, true)) {
+            throw new RuntimeException('Nao foi possivel criar a pasta /uploads.');
+        }
+        $uploadsDirReal = realpath($uploadsDir);
+        if ($uploadsDirReal === false) {
+            throw new RuntimeException('Pasta /uploads invalida.');
         }
 
-        $siteDir = $uploadsDir . DIRECTORY_SEPARATOR . 'site';
+        $siteDir = $uploadsDirReal . DIRECTORY_SEPARATOR . 'site';
         if (!is_dir($siteDir) && !mkdir($siteDir, 0755, true)) {
-            throw new RuntimeException('Não foi possível criar a pasta de uploads.');
+            throw new RuntimeException('Nao foi possivel criar a pasta de uploads.');
         }
 
         $chave = preg_replace('/[^a-z0-9\-]/i', '-', (string) ($imagem['chave'] ?? 'imagem'));
@@ -133,4 +139,3 @@ try {
     setFlash('error', 'Erro ao atualizar imagem: ' . $e->getMessage());
     redirecionar('editar-imagem.php?id=' . $id);
 }
-

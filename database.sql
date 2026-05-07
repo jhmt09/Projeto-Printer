@@ -38,6 +38,17 @@ CREATE TABLE IF NOT EXISTS site_textos (
   UNIQUE KEY uq_site_textos_chave (chave)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE IF NOT EXISTS site_promocionais (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  titulo VARCHAR(150) NOT NULL,
+  legenda VARCHAR(255) DEFAULT NULL,
+  caminho VARCHAR(255) NOT NULL,
+  alt_text VARCHAR(255) DEFAULT NULL,
+  ordem INT UNSIGNED NOT NULL DEFAULT 0,
+  ativo TINYINT(1) NOT NULL DEFAULT 1,
+  atualizado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 INSERT INTO site_imagens
   (chave, titulo, descricao, caminho, alt_text, largura_recomendada, altura_recomendada, tamanho_max_mb, ativo)
 VALUES
@@ -161,4 +172,20 @@ ON DUPLICATE KEY UPDATE
   titulo = VALUES(titulo),
   conteudo = VALUES(conteudo),
   tipo = VALUES(tipo),
+  ativo = VALUES(ativo);
+
+INSERT INTO site_promocionais (id, titulo, legenda, caminho, alt_text, ordem, ativo)
+VALUES
+  (1, 'Imagem Promocional 1', 'Aplicacao em linha de producao.', 'images/banner/01-banner.jpg', 'Imagem promocional 1', 1, 1),
+  (2, 'Imagem Promocional 2', 'Codificacao com alta nitidez.', 'images/banner/02-banner.jpg', 'Imagem promocional 2', 2, 1),
+  (3, 'Imagem Promocional 3', 'Equipe tecnica especializada.', 'images/banner/03-banner.jpg', 'Imagem promocional 3', 3, 1),
+  (4, 'Imagem Promocional 4', 'Instalacao e suporte continuo.', 'images/banner/04-banner.jpg', 'Imagem promocional 4', 4, 1),
+  (5, 'Imagem Promocional 5', 'Projetos para diversas industrias.', 'images/banner/01-banner.jpg', 'Imagem promocional 5', 5, 1),
+  (6, 'Imagem Promocional 6', 'Resultados reais no dia a dia.', 'images/banner/02-banner.jpg', 'Imagem promocional 6', 6, 1)
+ON DUPLICATE KEY UPDATE
+  titulo = VALUES(titulo),
+  legenda = VALUES(legenda),
+  caminho = VALUES(caminho),
+  alt_text = VALUES(alt_text),
+  ordem = VALUES(ordem),
   ativo = VALUES(ativo);

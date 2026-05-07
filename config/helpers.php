@@ -391,6 +391,8 @@ function sincronizarConfiguracoesSite(): void
             return;
         }
 
+        garantirTabelaPromocionais($pdo);
+
         $sqlImagem = 'INSERT INTO site_imagens (chave, titulo, descricao, caminho, alt_text, largura_recomendada, altura_recomendada, tamanho_max_mb, ativo) VALUES (:chave, :titulo, :descricao, :caminho, :alt_text, :largura_recomendada, :altura_recomendada, :tamanho_max_mb, :ativo) ON DUPLICATE KEY UPDATE titulo = VALUES(titulo), descricao = VALUES(descricao), largura_recomendada = VALUES(largura_recomendada), altura_recomendada = VALUES(altura_recomendada), tamanho_max_mb = VALUES(tamanho_max_mb), ativo = VALUES(ativo)';
         $stmtImagem = $pdo->prepare($sqlImagem);
 
@@ -420,8 +422,80 @@ function sincronizarConfiguracoesSite(): void
                 ':ativo' => $txt['ativo'],
             ]);
         }
+
+        sincronizarPromocionaisPadrao($pdo);
     } catch (Throwable $e) {
         // Nao interrompe a landing se o banco estiver indisponivel.
+    }
+}
+
+function garantirTabelaPromocionais(PDO $pdo): void
+{
+    $sql = <<<SQL
+CREATE TABLE IF NOT EXISTS site_promocionais (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  titulo VARCHAR(150) NOT NULL,
+  legenda VARCHAR(255) DEFAULT NULL,
+  caminho VARCHAR(255) NOT NULL,
+  alt_text VARCHAR(255) DEFAULT NULL,
+  ordem INT UNSIGNED NOT NULL DEFAULT 0,
+  ativo TINYINT(1) NOT NULL DEFAULT 1,
+  atualizado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+SQL;
+
+    $pdo->exec($sql);
+}
+
+function sincronizarPromocionaisPadrao(PDO $pdo): void
+{
+    $countStmt = $pdo->query('SELECT COUNT(*) AS total FROM site_promocionais');
+    $total = (int) (($countStmt->fetch()['total'] ?? 0));
+    if ($total > 0) {
+        return;
+    }
+
+    $padrao = [
+        ['titulo' => 'Imagem Promocional 1', 'legenda' => getTextoSite('promocional_1_legenda', 'Aplicacao em linha de producao.'), 'caminho' => getImagem('promocional_1', 'images/banner/01-banner.jpg'), 'alt' => getAltImagem('promocional_1', 'Imagem promocional 1'), 'ordem' => 1],
+        ['titulo' => 'Imagem Promocional 2', 'legenda' => getTextoSite('promocional_2_legenda', 'Codificacao com alta nitidez.'), 'caminho' => getImagem('promocional_2', 'images/banner/02-banner.jpg'), 'alt' => getAltImagem('promocional_2', 'Imagem promocional 2'), 'ordem' => 2],
+        ['titulo' => 'Imagem Promocional 3', 'legenda' => getTextoSite('promocional_3_legenda', 'Equipe tecnica especializada.'), 'caminho' => getImagem('promocional_3', 'images/banner/03-banner.jpg'), 'alt' => getAltImagem('promocional_3', 'Imagem promocional 3'), 'ordem' => 3],
+        ['titulo' => 'Imagem Promocional 4', 'legenda' => getTextoSite('promocional_4_legenda', 'Instalacao e suporte continuo.'), 'caminho' => getImagem('promocional_4', 'images/banner/04-banner.jpg'), 'alt' => getAltImagem('promocional_4', 'Imagem promocional 4'), 'ordem' => 4],
+        ['titulo' => 'Imagem Promocional 5', 'legenda' => getTextoSite('promocional_5_legenda', 'Projetos para diversas industrias.'), 'caminho' => getImagem('promocional_5', 'images/banner/01-banner.jpg'), 'alt' => getAltImagem('promocional_5', 'Imagem promocional 5'), 'ordem' => 5],
+        ['titulo' => 'Imagem Promocional 6', 'legenda' => getTextoSite('promocional_6_legenda', 'Resultados reais no dia a dia.'), 'caminho' => getImagem('promocional_6', 'images/banner/02-banner.jpg'), 'alt' => getAltImagem('promocional_6', 'Imagem promocional 6'), 'ordem' => 6],
+    ];
+
+    $stmt = $pdo->prepare('INSERT INTO site_promocionais (titulo, legenda, caminho, alt_text, ordem, ativo) VALUES (:titulo, :legenda, :caminho, :alt_text, :ordem, 1)');
+    foreach ($padrao as $item) {
+        $stmt->execute([
+            ':titulo' => $item['titulo'],
+            ':legenda' => $item['legenda'],
+            ':caminho' => $item['caminho'],
+            ':alt_text' => $item['alt'],
+            ':ordem' => $item['ordem'],
+        ]);
+    }
+}
+
+/**
+ * @return array<int, array<string,mixed>>
+ */
+function getPromocionaisAtivos(): array
+{
+    try {
+        $pdo = getPDOConnectionOrNull();
+        if (!$pdo instanceof PDO) {
+            return [];
+        }
+
+        garantirTabelaPromocionais($pdo);
+        sincronizarPromocionaisPadrao($pdo);
+
+        $stmt = $pdo->query('SELECT id, titulo, legenda, caminho, alt_text, ordem FROM site_promocionais WHERE ativo = 1 ORDER BY ordem ASC, id ASC');
+        $rows = $stmt->fetchAll();
+
+        return is_array($rows) ? $rows : [];
+    } catch (Throwable $e) {
+        return [];
     }
 }
 

@@ -11,7 +11,7 @@ $textos = [];
 
 try {
     $pdo = getPDOConnection();
-    $stmt = $pdo->prepare('SELECT * FROM site_textos ORDER BY id ASC');
+    $stmt = $pdo->prepare("SELECT * FROM site_textos WHERE chave NOT REGEXP '^promocional_[0-9]+_legenda$' ORDER BY id ASC");
     $stmt->execute();
     $textos = $stmt->fetchAll();
 } catch (Throwable $e) {

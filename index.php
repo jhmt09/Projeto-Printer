@@ -54,18 +54,6 @@ $servico3Src = getImagem('servico_3', 'images/banner/04-banner.jpg');
 $servico3Alt = getAltImagem('servico_3', 'Imagem do servico 3');
 $servico4Src = getImagem('servico_4', 'images/banner/02-banner.jpg');
 $servico4Alt = getAltImagem('servico_4', 'Imagem do servico 4');
-$promo1Src = getImagem('promocional_1', 'images/banner/01-banner.jpg');
-$promo1Alt = getAltImagem('promocional_1', 'Imagem promocional 1');
-$promo2Src = getImagem('promocional_2', 'images/banner/02-banner.jpg');
-$promo2Alt = getAltImagem('promocional_2', 'Imagem promocional 2');
-$promo3Src = getImagem('promocional_3', 'images/banner/03-banner.jpg');
-$promo3Alt = getAltImagem('promocional_3', 'Imagem promocional 3');
-$promo4Src = getImagem('promocional_4', 'images/banner/04-banner.jpg');
-$promo4Alt = getAltImagem('promocional_4', 'Imagem promocional 4');
-$promo5Src = getImagem('promocional_5', 'images/banner/01-banner.jpg');
-$promo5Alt = getAltImagem('promocional_5', 'Imagem promocional 5');
-$promo6Src = getImagem('promocional_6', 'images/banner/02-banner.jpg');
-$promo6Alt = getAltImagem('promocional_6', 'Imagem promocional 6');
 
 $carouselSlides = [
     ['src' => getImagem('carousel_1', getImagem('banner_principal', 'images/banner/01-banner.jpg')), 'alt' => getAltImagem('carousel_1', 'Slide 1 do carrossel')],
@@ -73,14 +61,7 @@ $carouselSlides = [
     ['src' => getImagem('carousel_3', 'images/banner/03-banner.jpg'), 'alt' => getAltImagem('carousel_3', 'Slide 3 do carrossel')],
     ['src' => getImagem('carousel_4', 'images/banner/04-banner.jpg'), 'alt' => getAltImagem('carousel_4', 'Slide 4 do carrossel')],
 ];
-$promocionais = [
-    ['src' => $promo1Src, 'alt' => $promo1Alt, 'legenda' => $t('promocional_1_legenda', 'Aplicacao em linha de producao.')],
-    ['src' => $promo2Src, 'alt' => $promo2Alt, 'legenda' => $t('promocional_2_legenda', 'Codificacao com alta nitidez.')],
-    ['src' => $promo3Src, 'alt' => $promo3Alt, 'legenda' => $t('promocional_3_legenda', 'Equipe tecnica especializada.')],
-    ['src' => $promo4Src, 'alt' => $promo4Alt, 'legenda' => $t('promocional_4_legenda', 'Instalacao e suporte continuo.')],
-    ['src' => $promo5Src, 'alt' => $promo5Alt, 'legenda' => $t('promocional_5_legenda', 'Projetos para diversas industrias.')],
-    ['src' => $promo6Src, 'alt' => $promo6Alt, 'legenda' => $t('promocional_6_legenda', 'Resultados reais no dia a dia.')],
-];
+$promocionais = getPromocionaisAtivos();
 
 $mostrarOrcamento = getTextoBoolean('orcamento_exibir', true);
 
@@ -239,16 +220,28 @@ $footerEmail = $t('footer_email', 'contato@printergoiania.com.br');
             <p class="mx-auto mt-4 max-w-3xl text-slate-600"><?= e($t('promocionais_subtitulo', 'Registros reais de instalacoes, atendimentos e operacoes em clientes atendidos pela Printer Goiania.')) ?></p>
           </div>
 
-          <div class="promo-gallery mt-10">
-            <?php foreach ($promocionais as $item): ?>
-              <article class="promo-card">
-                <img src="<?= e($item['src']) ?>" alt="<?= e($item['alt']) ?>" class="promo-image" loading="lazy">
-                <div class="promo-caption">
-                  <p><?= e($item['legenda']) ?></p>
-                </div>
-              </article>
-            <?php endforeach; ?>
-          </div>
+          <?php if (!empty($promocionais)): ?>
+            <div class="promo-gallery mt-10">
+              <?php foreach ($promocionais as $item): ?>
+                <?php
+                  $imgSrc = (string) ($item['caminho'] ?? '');
+                  $imgAlt = (string) ($item['alt_text'] ?? '');
+                  $imgLegenda = (string) ($item['legenda'] ?? '');
+                  if ($imgSrc === '') {
+                      continue;
+                  }
+                ?>
+                <article class="promo-card">
+                  <img src="<?= e($imgSrc) ?>" alt="<?= e($imgAlt !== '' ? $imgAlt : 'Imagem promocional') ?>" class="promo-image" loading="lazy">
+                  <div class="promo-caption">
+                    <p><?= e($imgLegenda !== '' ? $imgLegenda : 'Trabalho promocional da Printer Goiania.') ?></p>
+                  </div>
+                </article>
+              <?php endforeach; ?>
+            </div>
+          <?php else: ?>
+            <p class="mt-10 text-center text-slate-500">Nenhuma foto promocional cadastrada no momento.</p>
+          <?php endif; ?>
         </div>
       </section>
 

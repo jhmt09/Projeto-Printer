@@ -5,6 +5,7 @@ function adminMenuItems(): array
     return [
         'dashboard' => ['label' => 'Dashboard', 'href' => 'dashboard.php'],
         'imagens' => ['label' => 'Imagens do Site', 'href' => 'dashboard.php#imagens'],
+        'promocionais' => ['label' => 'Fotos Promocionais', 'href' => 'promocionais.php'],
         'textos' => ['label' => 'Textos do Site', 'href' => 'editar-texto.php'],
         'sair' => ['label' => 'Sair', 'href' => 'logout.php'],
     ];

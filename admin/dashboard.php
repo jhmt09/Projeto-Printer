@@ -10,11 +10,14 @@ protegerPagina();
 $imagens = [];
 $totalImagens = 0;
 $totalTextos = 0;
+$totalPromocionais = 0;
 
 try {
     $pdo = getPDOConnection();
 
-    $stmtImagens = $pdo->prepare('SELECT * FROM site_imagens ORDER BY id ASC');
+    garantirTabelaPromocionais($pdo);
+
+    $stmtImagens = $pdo->prepare("SELECT * FROM site_imagens WHERE chave NOT REGEXP '^promocional_[0-9]+$' ORDER BY id ASC");
     $stmtImagens->execute();
     $imagens = $stmtImagens->fetchAll();
     $totalImagens = is_array($imagens) ? count($imagens) : 0;
@@ -22,6 +25,10 @@ try {
     $stmtTextos = $pdo->prepare('SELECT COUNT(*) AS total FROM site_textos WHERE ativo = 1');
     $stmtTextos->execute();
     $totalTextos = (int) ($stmtTextos->fetch()['total'] ?? 0);
+
+    $stmtPromos = $pdo->prepare('SELECT COUNT(*) AS total FROM site_promocionais');
+    $stmtPromos->execute();
+    $totalPromocionais = (int) ($stmtPromos->fetch()['total'] ?? 0);
 } catch (Throwable $e) {
     setFlash('error', 'Nao foi possivel carregar os dados do painel. Verifique a conexao com o banco.');
 }
@@ -49,6 +56,12 @@ renderAdminHeader('Dashboard', 'dashboard');
   </article>
 
   <article class="card">
+    <h2>Fotos promocionais</h2>
+    <p class="kpi"><?= (int) $totalPromocionais ?></p>
+    <p class="text-muted">Total de fotos na galeria promocional ilimitada.</p>
+  </article>
+
+  <article class="card">
     <h2>Status do painel</h2>
     <p class="kpi">Seguro</p>
     <p class="text-muted">Sessao protegida, CSRF ativo e upload validado.</p>
@@ -58,6 +71,7 @@ renderAdminHeader('Dashboard', 'dashboard');
 <section id="imagens" class="card" style="margin-top: 16px;">
   <h2>Imagens do site</h2>
   <p class="text-muted">Cada linha informa em qual secao a imagem aparece. Clique em "Alterar imagem" para trocar o arquivo.</p>
+  <p class="text-muted">As fotos da galeria promocional sao gerenciadas em <a href="promocionais.php">Fotos Promocionais</a>.</p>
 
   <div class="table-wrap">
     <table class="table">
