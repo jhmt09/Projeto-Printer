@@ -42,6 +42,8 @@ try {
         $conteudo = $conteudo === '1' ? '1' : '0';
     } else {
         $conteudo = limparTexto($conteudo, 10000);
+        $conteudo = strip_tags($conteudo);
+        $conteudo = str_replace(['<?', '?>'], '', $conteudo);
         if ($conteudo === '') {
             setFlash('error', 'O conteudo nao pode ficar vazio.');
             redirecionar('editar-texto.php#texto-' . $id);

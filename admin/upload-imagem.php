@@ -22,6 +22,8 @@ if (!$id) {
 }
 
 $altText = limparTexto((string) ($_POST['alt_text'] ?? ''), 255);
+$altText = strip_tags($altText);
+$altText = str_replace(['<?', '?>'], '', $altText);
 
 try {
     $pdo = getPDOConnection();

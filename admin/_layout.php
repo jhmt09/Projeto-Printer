@@ -27,6 +27,7 @@ function renderAdminHeader(string $title, string $active = 'dashboard'): void
   <div class="admin-wrap">
     <aside class="admin-sidebar">
       <div class="brand">Printer Admin</div>
+      <p class="sidebar-note">Edite somente textos e imagens da landing. Nao ha edicao de codigo.</p>
       <nav>
         <ul>
           <?php foreach ($menu as $key => $item): ?>

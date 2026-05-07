@@ -520,3 +520,149 @@ function getTextoBoolean(string $chave, bool $fallback = false): bool
 
     return in_array($valor, ['1', 'true', 'sim', 'yes', 'on'], true);
 }
+
+/**
+ * @return array{secao:string,bloco:string,onde:string}
+ */
+function getAdminTextMeta(string $chave): array
+{
+    $mapa = [
+        'site_titulo' => ['secao' => 'Configuracoes Gerais', 'bloco' => 'Titulo da pagina', 'onde' => 'Aba do navegador e SEO basico'],
+        'site_descricao' => ['secao' => 'Configuracoes Gerais', 'bloco' => 'Descricao da pagina', 'onde' => 'Descricao de busca (SEO)'],
+
+        'contato_telefone' => ['secao' => 'Topo e Contato', 'bloco' => 'Telefone principal', 'onde' => 'Barra superior e contato'],
+        'contato_whatsapp_numero' => ['secao' => 'Topo e Contato', 'bloco' => 'Numero do WhatsApp', 'onde' => 'Links dos botoes de WhatsApp'],
+        'contato_whatsapp_texto' => ['secao' => 'Topo e Contato', 'bloco' => 'Mensagem padrao WhatsApp', 'onde' => 'Mensagem automatica enviada ao abrir WhatsApp'],
+        'topbar_whatsapp_label' => ['secao' => 'Topo e Contato', 'bloco' => 'Rotulo do WhatsApp', 'onde' => 'Barra superior'],
+
+        'social_facebook_url' => ['secao' => 'Topo e Redes Sociais', 'bloco' => 'Link Facebook', 'onde' => 'Icones sociais do topo e rodape'],
+        'social_instagram_url' => ['secao' => 'Topo e Redes Sociais', 'bloco' => 'Link Instagram', 'onde' => 'Icones sociais do topo e rodape'],
+        'social_youtube_url' => ['secao' => 'Topo e Redes Sociais', 'bloco' => 'Link YouTube', 'onde' => 'Icones sociais do topo e rodape'],
+
+        'menu_venda' => ['secao' => 'Menu do Site', 'bloco' => 'Menu Venda', 'onde' => 'Menu principal e rodape'],
+        'menu_assistencia' => ['secao' => 'Menu do Site', 'bloco' => 'Menu Assistencia Tecnica', 'onde' => 'Menu principal e rodape'],
+        'menu_promocionais' => ['secao' => 'Menu do Site', 'bloco' => 'Menu Promocoes', 'onde' => 'Menu principal e rodape'],
+        'menu_vantagens' => ['secao' => 'Menu do Site', 'bloco' => 'Menu Vantagens', 'onde' => 'Menu principal e rodape'],
+        'menu_depoimentos' => ['secao' => 'Menu do Site', 'bloco' => 'Menu Depoimentos', 'onde' => 'Menu principal e rodape'],
+        'menu_orcamento' => ['secao' => 'Menu do Site', 'bloco' => 'Menu Orcamento', 'onde' => 'Menu principal e rodape'],
+        'menu_contato' => ['secao' => 'Menu do Site', 'bloco' => 'Menu Contato', 'onde' => 'Menu principal e rodape'],
+
+        'hero_badge' => ['secao' => 'Carrossel Principal', 'bloco' => 'Selo superior', 'onde' => 'Topo do banner principal'],
+        'hero_titulo' => ['secao' => 'Carrossel Principal', 'bloco' => 'Titulo principal', 'onde' => 'Texto grande no banner principal'],
+        'hero_subtitulo' => ['secao' => 'Carrossel Principal', 'bloco' => 'Subtitulo principal', 'onde' => 'Texto complementar no banner principal'],
+        'hero_btn_contato' => ['secao' => 'Carrossel Principal', 'bloco' => 'Botao Contato', 'onde' => 'Botao de acao no banner'],
+        'hero_btn_whatsapp' => ['secao' => 'Carrossel Principal', 'bloco' => 'Botao WhatsApp', 'onde' => 'Botao de acao no banner'],
+
+        'bloco_venda_titulo' => ['secao' => 'Cards de Destaque', 'bloco' => 'Card Venda - titulo', 'onde' => 'Card logo abaixo do banner'],
+        'bloco_venda_texto' => ['secao' => 'Cards de Destaque', 'bloco' => 'Card Venda - texto', 'onde' => 'Card logo abaixo do banner'],
+        'bloco_venda_btn' => ['secao' => 'Cards de Destaque', 'bloco' => 'Card Venda - botao', 'onde' => 'Card logo abaixo do banner'],
+        'bloco_assistencia_titulo' => ['secao' => 'Cards de Destaque', 'bloco' => 'Card Assistencia - titulo', 'onde' => 'Card logo abaixo do banner'],
+        'bloco_assistencia_texto' => ['secao' => 'Cards de Destaque', 'bloco' => 'Card Assistencia - texto', 'onde' => 'Card logo abaixo do banner'],
+        'bloco_assistencia_btn' => ['secao' => 'Cards de Destaque', 'bloco' => 'Card Assistencia - botao', 'onde' => 'Card logo abaixo do banner'],
+
+        'produtos_titulo' => ['secao' => 'Secao Produtos', 'bloco' => 'Titulo da secao', 'onde' => 'Cabecalho da secao Produtos'],
+        'produto_1_texto' => ['secao' => 'Secao Produtos', 'bloco' => 'Produto 1 - descricao', 'onde' => 'Card de produto 1'],
+        'produto_2_texto' => ['secao' => 'Secao Produtos', 'bloco' => 'Produto 2 - descricao', 'onde' => 'Card de produto 2'],
+        'produto_3_texto' => ['secao' => 'Secao Produtos', 'bloco' => 'Produto 3 - descricao', 'onde' => 'Card de produto 3'],
+        'produto_4_texto' => ['secao' => 'Secao Produtos', 'bloco' => 'Produto 4 - descricao', 'onde' => 'Card de produto 4'],
+
+        'promocionais_titulo' => ['secao' => 'Secao Promocionais', 'bloco' => 'Titulo da secao', 'onde' => 'Cabecalho da galeria promocional'],
+        'promocionais_subtitulo' => ['secao' => 'Secao Promocionais', 'bloco' => 'Subtitulo da secao', 'onde' => 'Texto abaixo do titulo da galeria'],
+        'promocional_1_legenda' => ['secao' => 'Secao Promocionais', 'bloco' => 'Legenda promocional 1', 'onde' => 'Legenda da imagem promocional 1'],
+        'promocional_2_legenda' => ['secao' => 'Secao Promocionais', 'bloco' => 'Legenda promocional 2', 'onde' => 'Legenda da imagem promocional 2'],
+        'promocional_3_legenda' => ['secao' => 'Secao Promocionais', 'bloco' => 'Legenda promocional 3', 'onde' => 'Legenda da imagem promocional 3'],
+        'promocional_4_legenda' => ['secao' => 'Secao Promocionais', 'bloco' => 'Legenda promocional 4', 'onde' => 'Legenda da imagem promocional 4'],
+        'promocional_5_legenda' => ['secao' => 'Secao Promocionais', 'bloco' => 'Legenda promocional 5', 'onde' => 'Legenda da imagem promocional 5'],
+        'promocional_6_legenda' => ['secao' => 'Secao Promocionais', 'bloco' => 'Legenda promocional 6', 'onde' => 'Legenda da imagem promocional 6'],
+
+        'depoimentos_titulo' => ['secao' => 'Secao Depoimentos', 'bloco' => 'Titulo da secao', 'onde' => 'Cabecalho da secao Depoimentos'],
+        'depoimento_1_nome' => ['secao' => 'Secao Depoimentos', 'bloco' => 'Depoimento 1 - nome', 'onde' => 'Card de depoimento 1'],
+        'depoimento_1_texto' => ['secao' => 'Secao Depoimentos', 'bloco' => 'Depoimento 1 - texto', 'onde' => 'Card de depoimento 1'],
+        'depoimento_2_nome' => ['secao' => 'Secao Depoimentos', 'bloco' => 'Depoimento 2 - nome', 'onde' => 'Card de depoimento 2'],
+        'depoimento_2_texto' => ['secao' => 'Secao Depoimentos', 'bloco' => 'Depoimento 2 - texto', 'onde' => 'Card de depoimento 2'],
+        'depoimento_3_nome' => ['secao' => 'Secao Depoimentos', 'bloco' => 'Depoimento 3 - nome', 'onde' => 'Card de depoimento 3'],
+        'depoimento_3_texto' => ['secao' => 'Secao Depoimentos', 'bloco' => 'Depoimento 3 - texto', 'onde' => 'Card de depoimento 3'],
+
+        'vantagem_1_titulo' => ['secao' => 'Secao Vantagens', 'bloco' => 'Vantagem 1 - titulo', 'onde' => 'Coluna esquerda da secao Vantagens'],
+        'vantagem_1_texto' => ['secao' => 'Secao Vantagens', 'bloco' => 'Vantagem 1 - texto', 'onde' => 'Coluna esquerda da secao Vantagens'],
+        'vantagem_2_titulo' => ['secao' => 'Secao Vantagens', 'bloco' => 'Vantagem 2 - titulo', 'onde' => 'Coluna esquerda da secao Vantagens'],
+        'vantagem_2_texto' => ['secao' => 'Secao Vantagens', 'bloco' => 'Vantagem 2 - texto', 'onde' => 'Coluna esquerda da secao Vantagens'],
+        'vantagem_3_titulo' => ['secao' => 'Secao Vantagens', 'bloco' => 'Vantagem 3 - titulo', 'onde' => 'Coluna direita da secao Vantagens'],
+        'vantagem_3_texto' => ['secao' => 'Secao Vantagens', 'bloco' => 'Vantagem 3 - texto', 'onde' => 'Coluna direita da secao Vantagens'],
+        'vantagem_4_titulo' => ['secao' => 'Secao Vantagens', 'bloco' => 'Vantagem 4 - titulo', 'onde' => 'Coluna direita da secao Vantagens'],
+        'vantagem_4_texto' => ['secao' => 'Secao Vantagens', 'bloco' => 'Vantagem 4 - texto', 'onde' => 'Coluna direita da secao Vantagens'],
+
+        'sobre_titulo' => ['secao' => 'Secao Sobre', 'bloco' => 'Titulo da secao', 'onde' => 'Bloco sobre a empresa'],
+        'sobre_texto' => ['secao' => 'Secao Sobre', 'bloco' => 'Texto da secao', 'onde' => 'Bloco sobre a empresa'],
+        'sobre_card_1' => ['secao' => 'Secao Sobre', 'bloco' => 'Card Sobre 1', 'onde' => 'Cards de apoio na secao Sobre'],
+        'sobre_card_2' => ['secao' => 'Secao Sobre', 'bloco' => 'Card Sobre 2', 'onde' => 'Cards de apoio na secao Sobre'],
+        'sobre_card_3' => ['secao' => 'Secao Sobre', 'bloco' => 'Card Sobre 3', 'onde' => 'Cards de apoio na secao Sobre'],
+
+        'orcamento_exibir' => ['secao' => 'Secao Orcamento', 'bloco' => 'Exibir secao', 'onde' => 'Liga/desliga o bloco de formulario'],
+        'orcamento_titulo' => ['secao' => 'Secao Orcamento', 'bloco' => 'Titulo da secao', 'onde' => 'Cabecalho do formulario de orcamento'],
+        'orcamento_texto' => ['secao' => 'Secao Orcamento', 'bloco' => 'Texto da secao', 'onde' => 'Subtitulo do formulario de orcamento'],
+        'orcamento_campo_nome' => ['secao' => 'Secao Orcamento', 'bloco' => 'Campo Nome', 'onde' => 'Placeholder do formulario de orcamento'],
+        'orcamento_campo_email' => ['secao' => 'Secao Orcamento', 'bloco' => 'Campo E-mail', 'onde' => 'Placeholder do formulario de orcamento'],
+        'orcamento_campo_telefone' => ['secao' => 'Secao Orcamento', 'bloco' => 'Campo Telefone', 'onde' => 'Placeholder do formulario de orcamento'],
+        'orcamento_campo_mensagem' => ['secao' => 'Secao Orcamento', 'bloco' => 'Campo Mensagem', 'onde' => 'Placeholder do formulario de orcamento'],
+        'orcamento_btn' => ['secao' => 'Secao Orcamento', 'bloco' => 'Botao enviar', 'onde' => 'Botao do formulario de orcamento'],
+        'orcamento_nota' => ['secao' => 'Secao Orcamento', 'bloco' => 'Texto de orientacao', 'onde' => 'Rodape do formulario de orcamento'],
+
+        'segmentos_titulo' => ['secao' => 'Secao Segmentos', 'bloco' => 'Titulo da secao', 'onde' => 'Cabecalho da secao Segmentos'],
+        'segmentos_texto' => ['secao' => 'Secao Segmentos', 'bloco' => 'Texto da secao', 'onde' => 'Texto explicativo da secao Segmentos'],
+        'segmento_1' => ['secao' => 'Secao Segmentos', 'bloco' => 'Segmento 1', 'onde' => 'Card da grade de segmentos'],
+        'segmento_2' => ['secao' => 'Secao Segmentos', 'bloco' => 'Segmento 2', 'onde' => 'Card da grade de segmentos'],
+        'segmento_3' => ['secao' => 'Secao Segmentos', 'bloco' => 'Segmento 3', 'onde' => 'Card da grade de segmentos'],
+        'segmento_4' => ['secao' => 'Secao Segmentos', 'bloco' => 'Segmento 4', 'onde' => 'Card da grade de segmentos'],
+        'segmento_5' => ['secao' => 'Secao Segmentos', 'bloco' => 'Segmento 5', 'onde' => 'Card da grade de segmentos'],
+        'segmento_6' => ['secao' => 'Secao Segmentos', 'bloco' => 'Segmento 6', 'onde' => 'Card da grade de segmentos'],
+
+        'footer_titulo' => ['secao' => 'Rodape', 'bloco' => 'Titulo principal', 'onde' => 'Coluna principal do rodape'],
+        'footer_endereco' => ['secao' => 'Rodape', 'bloco' => 'Endereco', 'onde' => 'Coluna principal do rodape'],
+        'footer_telefone' => ['secao' => 'Rodape', 'bloco' => 'Telefone', 'onde' => 'Coluna principal do rodape'],
+        'footer_email' => ['secao' => 'Rodape', 'bloco' => 'E-mail', 'onde' => 'Coluna principal do rodape'],
+        'footer_menu_titulo' => ['secao' => 'Rodape', 'bloco' => 'Titulo menu rapido', 'onde' => 'Coluna de links do rodape'],
+        'footer_news_titulo' => ['secao' => 'Rodape', 'bloco' => 'Titulo newsletter', 'onde' => 'Coluna newsletter do rodape'],
+        'footer_news_texto' => ['secao' => 'Rodape', 'bloco' => 'Texto newsletter', 'onde' => 'Coluna newsletter do rodape'],
+        'footer_news_placeholder' => ['secao' => 'Rodape', 'bloco' => 'Placeholder newsletter', 'onde' => 'Campo de e-mail no rodape'],
+        'footer_news_btn' => ['secao' => 'Rodape', 'bloco' => 'Botao newsletter', 'onde' => 'Botao de envio no rodape'],
+        'footer_copyright' => ['secao' => 'Rodape', 'bloco' => 'Copyright', 'onde' => 'Faixa final do rodape'],
+    ];
+
+    return $mapa[$chave] ?? [
+        'secao' => 'Outros Campos',
+        'bloco' => $chave,
+        'onde' => 'Campo adicional da landing page',
+    ];
+}
+
+/**
+ * @return array{secao:string,onde:string}
+ */
+function getAdminImageMeta(string $chave): array
+{
+    $mapa = [
+        'logo_site' => ['secao' => 'Cabecalho e Rodape', 'onde' => 'Logo principal do topo e do final da pagina'],
+        'banner_principal' => ['secao' => 'Carrossel Principal', 'onde' => 'Imagem fallback do primeiro slide'],
+        'carousel_1' => ['secao' => 'Carrossel Principal', 'onde' => 'Slide 1 do carrossel'],
+        'carousel_2' => ['secao' => 'Carrossel Principal', 'onde' => 'Slide 2 do carrossel'],
+        'carousel_3' => ['secao' => 'Carrossel Principal', 'onde' => 'Slide 3 do carrossel'],
+        'carousel_4' => ['secao' => 'Carrossel Principal', 'onde' => 'Slide 4 do carrossel'],
+        'imagem_sobre' => ['secao' => 'Secao Vantagens/Sobre', 'onde' => 'Imagem central da secao institucional'],
+        'servico_1' => ['secao' => 'Secao Produtos', 'onde' => 'Imagem do produto 1'],
+        'servico_2' => ['secao' => 'Secao Produtos', 'onde' => 'Imagem do produto 2'],
+        'servico_3' => ['secao' => 'Secao Produtos', 'onde' => 'Imagem do produto 3'],
+        'servico_4' => ['secao' => 'Secao Produtos', 'onde' => 'Imagem do produto 4'],
+        'promocional_1' => ['secao' => 'Secao Promocionais', 'onde' => 'Imagem promocional 1'],
+        'promocional_2' => ['secao' => 'Secao Promocionais', 'onde' => 'Imagem promocional 2'],
+        'promocional_3' => ['secao' => 'Secao Promocionais', 'onde' => 'Imagem promocional 3'],
+        'promocional_4' => ['secao' => 'Secao Promocionais', 'onde' => 'Imagem promocional 4'],
+        'promocional_5' => ['secao' => 'Secao Promocionais', 'onde' => 'Imagem promocional 5'],
+        'promocional_6' => ['secao' => 'Secao Promocionais', 'onde' => 'Imagem promocional 6'],
+    ];
+
+    return $mapa[$chave] ?? [
+        'secao' => 'Outras Imagens',
+        'onde' => 'Imagem adicional da landing page',
+    ];
+}
