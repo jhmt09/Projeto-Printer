@@ -18,9 +18,13 @@ body {
     radial-gradient(circle at bottom left, rgba(198, 77, 65, 0.08), transparent 24%);
 }
 
+.hero-section {
+  background: #dae3ef;
+}
+
 .hero-carousel-track {
   position: relative;
-  height: 560px;
+  height: 610px;
 }
 
 .hero-slide {
@@ -41,6 +45,79 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
+  transform: scale(1);
+  transition: transform 6s ease;
+}
+
+.hero-slide.is-active .hero-slide-image {
+  transform: scale(1.04);
+}
+
+.hero-overlay {
+  background:
+    linear-gradient(96deg, rgba(241, 246, 253, 0.96) 0%, rgba(236, 244, 253, 0.9) 44%, rgba(24, 82, 154, 0.12) 72%, rgba(197, 87, 74, 0.18) 100%);
+}
+
+.hero-accent {
+  position: absolute;
+  z-index: 12;
+  pointer-events: none;
+  border: 28px solid transparent;
+  opacity: 0.62;
+}
+
+.hero-accent-a {
+  right: 56px;
+  top: 84px;
+  border-left-color: rgba(38, 131, 214, 0.45);
+  transform: rotate(14deg);
+}
+
+.hero-accent-b {
+  right: 86px;
+  bottom: 108px;
+  border-left-color: rgba(7, 86, 172, 0.4);
+  transform: rotate(-8deg);
+}
+
+.hero-content {
+  color: #0f3f7f;
+}
+
+.hero-badge {
+  background: rgba(73, 125, 191, 0.16);
+  color: #305f9b;
+}
+
+.hero-title {
+  color: #204884;
+  text-shadow: none;
+}
+
+.hero-subtitle {
+  color: #3c536f;
+  text-shadow: none;
+  max-width: 690px;
+}
+
+.hero-btn {
+  box-shadow: 0 10px 20px rgba(11, 43, 86, 0.2);
+}
+
+.hero-btn-primary {
+  background: #c85344;
+}
+
+.hero-btn-primary:hover {
+  background: #a84338;
+}
+
+.hero-btn-secondary {
+  background: #0c3f80;
+}
+
+.hero-btn-secondary:hover {
+  background: #0a3063;
 }
 
 .hero-control {
@@ -48,20 +125,21 @@ body {
   top: 50%;
   z-index: 30;
   transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
+  width: 62px;
+  height: 62px;
   border: 0;
   border-radius: 9999px;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(38, 48, 63, 0.42);
   color: #fff;
-  font-size: 26px;
+  font-size: 34px;
   line-height: 1;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .hero-control:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(38, 48, 63, 0.62);
+  transform: translateY(-50%) scale(1.04);
 }
 
 .hero-control-prev {
@@ -76,7 +154,7 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 1.2rem;
+  bottom: 1.35rem;
   z-index: 30;
   display: flex;
   justify-content: center;
@@ -89,29 +167,115 @@ body {
   border-radius: 9999px;
   border: 0;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.42);
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .hero-dot.is-active {
-  transform: scale(1.2);
-  background: #fff;
+  transform: scale(1.22);
+  background: #ffffff;
+}
+
+.promo-gallery {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 170px;
+}
+
+.promo-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid #dbe4ef;
+  box-shadow: 0 14px 26px rgba(20, 41, 78, 0.12);
+}
+
+.promo-card:nth-child(1),
+.promo-card:nth-child(4) {
+  grid-row: span 2;
+}
+
+.promo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.promo-card:hover .promo-image {
+  transform: scale(1.06);
+}
+
+.promo-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.85rem 0.9rem;
+  background: linear-gradient(180deg, rgba(6, 26, 54, 0) 0%, rgba(6, 26, 54, 0.82) 92%);
+}
+
+.promo-caption p {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #f7fbff;
+}
+
+@media (max-width: 1280px) {
+  .hero-carousel-track {
+    height: 560px;
+  }
 }
 
 @media (max-width: 1024px) {
   .hero-carousel-track {
-    height: 480px;
+    height: 500px;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .promo-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 190px;
   }
 }
 
 @media (max-width: 768px) {
   .hero-carousel-track {
-    height: 380px;
+    height: 430px;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   .hero-control {
-    width: 38px;
-    height: 38px;
-    font-size: 22px;
+    width: 44px;
+    height: 44px;
+    font-size: 26px;
+  }
+
+  .hero-accent {
+    display: none;
+  }
+
+  .promo-gallery {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 220px;
+  }
+
+  .promo-card:nth-child(1),
+  .promo-card:nth-child(4) {
+    grid-row: span 1;
   }
 }

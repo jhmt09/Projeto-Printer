@@ -54,12 +54,32 @@ $servico3Src = getImagem('servico_3', 'images/banner/04-banner.jpg');
 $servico3Alt = getAltImagem('servico_3', 'Imagem do servico 3');
 $servico4Src = getImagem('servico_4', 'images/banner/02-banner.jpg');
 $servico4Alt = getAltImagem('servico_4', 'Imagem do servico 4');
+$promo1Src = getImagem('promocional_1', 'images/banner/01-banner.jpg');
+$promo1Alt = getAltImagem('promocional_1', 'Imagem promocional 1');
+$promo2Src = getImagem('promocional_2', 'images/banner/02-banner.jpg');
+$promo2Alt = getAltImagem('promocional_2', 'Imagem promocional 2');
+$promo3Src = getImagem('promocional_3', 'images/banner/03-banner.jpg');
+$promo3Alt = getAltImagem('promocional_3', 'Imagem promocional 3');
+$promo4Src = getImagem('promocional_4', 'images/banner/04-banner.jpg');
+$promo4Alt = getAltImagem('promocional_4', 'Imagem promocional 4');
+$promo5Src = getImagem('promocional_5', 'images/banner/01-banner.jpg');
+$promo5Alt = getAltImagem('promocional_5', 'Imagem promocional 5');
+$promo6Src = getImagem('promocional_6', 'images/banner/02-banner.jpg');
+$promo6Alt = getAltImagem('promocional_6', 'Imagem promocional 6');
 
 $carouselSlides = [
     ['src' => getImagem('carousel_1', getImagem('banner_principal', 'images/banner/01-banner.jpg')), 'alt' => getAltImagem('carousel_1', 'Slide 1 do carrossel')],
     ['src' => getImagem('carousel_2', 'images/banner/02-banner.jpg'), 'alt' => getAltImagem('carousel_2', 'Slide 2 do carrossel')],
     ['src' => getImagem('carousel_3', 'images/banner/03-banner.jpg'), 'alt' => getAltImagem('carousel_3', 'Slide 3 do carrossel')],
     ['src' => getImagem('carousel_4', 'images/banner/04-banner.jpg'), 'alt' => getAltImagem('carousel_4', 'Slide 4 do carrossel')],
+];
+$promocionais = [
+    ['src' => $promo1Src, 'alt' => $promo1Alt, 'legenda' => $t('promocional_1_legenda', 'Aplicacao em linha de producao.')],
+    ['src' => $promo2Src, 'alt' => $promo2Alt, 'legenda' => $t('promocional_2_legenda', 'Codificacao com alta nitidez.')],
+    ['src' => $promo3Src, 'alt' => $promo3Alt, 'legenda' => $t('promocional_3_legenda', 'Equipe tecnica especializada.')],
+    ['src' => $promo4Src, 'alt' => $promo4Alt, 'legenda' => $t('promocional_4_legenda', 'Instalacao e suporte continuo.')],
+    ['src' => $promo5Src, 'alt' => $promo5Alt, 'legenda' => $t('promocional_5_legenda', 'Projetos para diversas industrias.')],
+    ['src' => $promo6Src, 'alt' => $promo6Alt, 'legenda' => $t('promocional_6_legenda', 'Resultados reais no dia a dia.')],
 ];
 
 $mostrarOrcamento = getTextoBoolean('orcamento_exibir', true);
@@ -121,6 +141,7 @@ $footerEmail = $t('footer_email', 'contato@printergoiania.com.br');
         <ul class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 py-4 text-sm font-semibold uppercase tracking-[0.05em] text-slate-800">
           <li><a href="#produtos" class="hover:text-[#c64d41]"><?= e($t('menu_venda', 'Venda')) ?></a></li>
           <li><a href="#assistencia" class="hover:text-[#c64d41]"><?= e($t('menu_assistencia', 'Assistencia Tecnica')) ?></a></li>
+          <li><a href="#promocionais" class="hover:text-[#c64d41]"><?= e($t('menu_promocionais', 'Promocoes')) ?></a></li>
           <li><a href="#vantagens" class="hover:text-[#c64d41]"><?= e($t('menu_vantagens', 'Vantagens')) ?></a></li>
           <li><a href="#depoimentos" class="hover:text-[#c64d41]"><?= e($t('menu_depoimentos', 'Depoimentos')) ?></a></li>
           <?php if ($mostrarOrcamento): ?>
@@ -132,7 +153,7 @@ $footerEmail = $t('footer_email', 'contato@printergoiania.com.br');
     </nav>
 
     <main id="home">
-      <section class="relative overflow-hidden" data-carousel data-interval="5500">
+      <section class="hero-section relative overflow-hidden" data-carousel data-interval="5500">
         <div class="hero-carousel-track">
           <?php foreach ($carouselSlides as $index => $slide): ?>
             <article class="hero-slide<?= $index === 0 ? ' is-active' : '' ?>" data-carousel-slide>
@@ -141,16 +162,18 @@ $footerEmail = $t('footer_email', 'contato@printergoiania.com.br');
           <?php endforeach; ?>
         </div>
 
-        <div class="absolute inset-0 z-10 bg-[linear-gradient(120deg,rgba(8,48,97,0.88),rgba(15,69,136,0.62)_40%,rgba(198,77,65,0.38))]"></div>
+        <div class="hero-overlay absolute inset-0 z-10"></div>
+        <div class="hero-accent hero-accent-a" aria-hidden="true"></div>
+        <div class="hero-accent hero-accent-b" aria-hidden="true"></div>
 
         <div class="absolute inset-0 z-20 mx-auto grid w-full max-w-7xl items-center gap-6 px-4 py-16 lg:grid-cols-[1fr_auto]">
-          <div class="max-w-2xl text-white">
-            <p class="inline-flex rounded bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em]"><?= e($t('hero_badge', 'Datadores Inkjet para Industria')) ?></p>
-            <h1 class="mt-5 text-4xl font-black leading-tight md:text-6xl"><?= e($t('hero_titulo', 'Venda e Assistencia de Datadores para elevar sua producao.')) ?></h1>
-            <p class="mt-5 max-w-xl text-base leading-8 text-slate-100"><?= e($t('hero_subtitulo', 'Estrutura tecnica para atendimento rapido em Goiania, Brasilia e regiao, com foco em performance, confiabilidade e suporte continuo.')) ?></p>
+          <div class="hero-content max-w-2xl">
+            <p class="hero-badge inline-flex rounded px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em]"><?= e($t('hero_badge', 'Datadores Inkjet para Industria')) ?></p>
+            <h1 class="hero-title mt-5 text-4xl font-black leading-tight md:text-6xl"><?= e($t('hero_titulo', 'Venda e Assistencia de Datadores para elevar sua producao.')) ?></h1>
+            <p class="hero-subtitle mt-5 max-w-xl text-base leading-8"><?= e($t('hero_subtitulo', 'Estrutura tecnica para atendimento rapido em Goiania, Brasilia e regiao, com foco em performance, confiabilidade e suporte continuo.')) ?></p>
             <div class="mt-8 flex flex-wrap gap-4">
-              <a href="#contato" class="inline-flex items-center rounded bg-[#c64d41] px-7 py-3 text-sm font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#a34e4c]"><?= e($t('hero_btn_contato', 'Entre em contato')) ?></a>
-              <a href="<?= e($whatsHref) ?>" target="_blank" rel="noopener" class="inline-flex items-center rounded bg-[#083061] px-7 py-3 text-sm font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#0f4588]"><i class="fa fa-whatsapp mr-2"></i><?= e($t('hero_btn_whatsapp', 'Falar no WhatsApp')) ?></a>
+              <a href="#contato" class="hero-btn hero-btn-primary inline-flex items-center rounded-full px-7 py-3 text-sm font-bold uppercase tracking-[0.06em] text-white transition"><?= e($t('hero_btn_contato', 'Entre em contato')) ?></a>
+              <a href="<?= e($whatsHref) ?>" target="_blank" rel="noopener" class="hero-btn hero-btn-secondary inline-flex items-center rounded-full px-7 py-3 text-sm font-bold uppercase tracking-[0.06em] text-white transition"><i class="fa fa-whatsapp mr-2"></i><?= e($t('hero_btn_whatsapp', 'Falar no WhatsApp')) ?></a>
             </div>
           </div>
         </div>
@@ -205,6 +228,26 @@ $footerEmail = $t('footer_email', 'contato@printergoiania.com.br');
               <img src="<?= e($servico4Src) ?>" alt="<?= e($servico4Alt) ?>" class="h-52 w-full rounded object-cover" loading="lazy">
               <h3 class="mt-4 text-center text-base font-semibold text-[#083061]"><?= e($t('produto_4_texto', 'Rebobinadoras para preparar rotulos datados com agilidade e padrao de qualidade.')) ?></h3>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="promocionais" class="bg-white px-4 py-20">
+        <div class="mx-auto max-w-7xl">
+          <div class="text-center">
+            <h2 class="text-4xl font-black text-[#083061]"><?= e($t('promocionais_titulo', 'Imagens Promocionais do Trabalho')) ?></h2>
+            <p class="mx-auto mt-4 max-w-3xl text-slate-600"><?= e($t('promocionais_subtitulo', 'Registros reais de instalacoes, atendimentos e operacoes em clientes atendidos pela Printer Goiania.')) ?></p>
+          </div>
+
+          <div class="promo-gallery mt-10">
+            <?php foreach ($promocionais as $item): ?>
+              <article class="promo-card">
+                <img src="<?= e($item['src']) ?>" alt="<?= e($item['alt']) ?>" class="promo-image" loading="lazy">
+                <div class="promo-caption">
+                  <p><?= e($item['legenda']) ?></p>
+                </div>
+              </article>
+            <?php endforeach; ?>
           </div>
         </div>
       </section>
@@ -334,6 +377,7 @@ $footerEmail = $t('footer_email', 'contato@printergoiania.com.br');
           <ul class="mt-5 space-y-2 text-sm text-slate-300">
             <li><a href="#produtos" class="hover:text-white"><i class="fa fa-angle-double-right"></i> <?= e($t('menu_venda', 'Venda')) ?></a></li>
             <li><a href="#assistencia" class="hover:text-white"><i class="fa fa-angle-double-right"></i> <?= e($t('menu_assistencia', 'Assistencia Tecnica')) ?></a></li>
+            <li><a href="#promocionais" class="hover:text-white"><i class="fa fa-angle-double-right"></i> <?= e($t('menu_promocionais', 'Promocoes')) ?></a></li>
             <li><a href="#vantagens" class="hover:text-white"><i class="fa fa-angle-double-right"></i> <?= e($t('menu_vantagens', 'Vantagens')) ?></a></li>
             <li><a href="#depoimentos" class="hover:text-white"><i class="fa fa-angle-double-right"></i> <?= e($t('menu_depoimentos', 'Depoimentos')) ?></a></li>
             <?php if ($mostrarOrcamento): ?>
